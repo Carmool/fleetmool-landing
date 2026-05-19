@@ -28,4 +28,9 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy dist --project-name=fleetmool-landing
+          # `project create` is idempotent across runs: first run creates the
+          # Pages project, later runs hit "already exists" and are skipped.
+          # The real deploy below surfaces any auth/config errors.
+          preCommands: |
+            wrangler pages project create fleetmool-landing --production-branch=main || true
+          command: pages deploy dist --project-name=fleetmool-landing --branch=main
