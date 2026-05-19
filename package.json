@@ -1,0 +1,16 @@
+{
+  "name": "fleetmool-landing",
+  "private": true,
+  "description": "Marketing site for Fleetmool and F4W — pure static, deployed to Cloudflare Pages.",
+  "scripts": {
+    "build": "rm -rf dist && mkdir -p dist && cp index.html f4w.html styles.css script.js dist/",
+    "preview": "npm run build && wrangler pages dev dist",
+    "deploy": "npm run build && CLOUDFLARE_ACCOUNT_ID=416f74acd9056965776eb0103b3b1ee7 wrangler pages deploy"
+  },
+  "devDependencies": {
+    "wrangler": "^3.114.6"
+  },
+  "engines": {
+    "node": ">=22.0.0"
+  }
+}

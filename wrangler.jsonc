@@ -1,0 +1,16 @@
+/**
+ * Cloudflare Pages config for fleetmool-landing.
+ * Docs: https://developers.cloudflare.com/workers/wrangler/configuration/
+ *
+ * `pages_build_output_dir` points to the dist/ folder produced by `npm run build`
+ * (a plain copy of the deployable files at the repo root).
+ */
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "fleetmool-landing",
+  "compatibility_date": "2026-05-19",
+  "pages_build_output_dir": "./dist",
+  "observability": {
+    "enabled": true
+  }
+}
