@@ -1,0 +1,50 @@
+name: Deploy PR preview
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+# Cancel in-flight runs for the same PR when a newer push arrives — the URL
+# is stable per PR, so a stale deploy would just overwrite the newer one.
+concurrency:
+  group: preview-pr-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    # Forks don't get repo secrets, so the deploy would fail. Skip cleanly.
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    permissions:
+      contents: read
+      pull-requests: write
+    env:
+      BRANCH: preview-pr-${{ github.event.pull_request.number }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - run: npm ci
+      - run: npm run build
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy dist --project-name=fleetmool-landing --branch=${{ env.BRANCH }}
+
+      - name: Comment preview URL on PR
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: cloudflare-preview
+          message: |
+            ### 🔍 Preview ready
+
+            **https://${{ env.BRANCH }}.dev.fleetmool.com**
+
+            <sub>Commit <code>${{ github.event.pull_request.head.sha }}</code> · fallback <a href="https://${{ env.BRANCH }}.fleetmool-landing.pages.dev">${{ env.BRANCH }}.fleetmool-landing.pages.dev</a></sub>

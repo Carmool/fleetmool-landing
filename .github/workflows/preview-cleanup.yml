@@ -1,0 +1,122 @@
+name: Cleanup preview deployments
+
+# Three triggers, one sweep:
+#   - pull_request: closed  → opportunistic cleanup right when a PR closes
+#   - schedule: daily       → safety net for missed cleanups, plus inactivity-based deletion
+#   - workflow_dispatch     → manual sweep with optional inactivity override
+#
+# The sweep enumerates every Pages preview deployment whose branch matches
+# `preview-pr-<N>`, groups by PR number, and deletes deployments for PRs
+# that are either closed or untouched for MAX_INACTIVE_DAYS. The branch is
+# stable per PR — re-deploys overwrite history, so a closed PR usually has
+# only a handful of deployments to delete.
+
+on:
+  pull_request:
+    types: [closed]
+  schedule:
+    - cron: '0 6 * * *'   # daily at 06:00 UTC
+  workflow_dispatch:
+    inputs:
+      max_inactive_days:
+        description: 'Delete previews for PRs untouched >N days'
+        required: false
+        default: '14'
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    # Forks running on pull_request: closed don't have secrets; skip cleanly.
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
+    steps:
+      - name: Sweep closed and inactive PR previews
+        env:
+          CF_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          PROJECT: fleetmool-landing
+          MAX_INACTIVE_DAYS: ${{ inputs.max_inactive_days || '14' }}
+        run: |
+          set -euo pipefail
+
+          inactivity_cutoff=$(date -u -d "${MAX_INACTIVE_DAYS} days ago" +%s)
+          declare -A pr_deployments   # pr_number -> "id1 id2 id3"
+
+          # 1. Page through every preview deployment, group by PR number.
+          page=1
+          while :; do
+            resp=$(curl -fsS \
+              -H "Authorization: Bearer ${CF_API_TOKEN}" \
+              "https://api.cloudflare.com/client/v4/accounts/${CF_ACCOUNT_ID}/pages/projects/${PROJECT}/deployments?env=preview&per_page=25&page=${page}")
+
+            count=$(echo "$resp" | jq '.result | length')
+            [ "$count" -eq 0 ] && break
+
+            while IFS=$'\t' read -r id branch; do
+              # Match `preview-pr-123` (stable per-PR) and also any legacy
+              # `preview-pr-123-<sha>` deployments from earlier runs.
+              if [[ "$branch" =~ ^preview-pr-([0-9]+)(-.*)?$ ]]; then
+                pr_num="${BASH_REMATCH[1]}"
+                pr_deployments[$pr_num]="${pr_deployments[$pr_num]:-} $id"
+              fi
+            done < <(echo "$resp" | jq -r '.result[] | [.id, (.deployment_trigger.metadata.branch // "")] | @tsv')
+
+            page=$((page+1))
+          done
+
+          # 2. For each PR with previews, decide whether to delete.
+          total_pr=0
+          total_deleted=0
+          for pr_num in "${!pr_deployments[@]}"; do
+            total_pr=$((total_pr+1))
+            reason=""
+
+            pr_data=$(gh api "repos/${REPO}/pulls/${pr_num}" 2>/dev/null || echo "")
+            if [ -z "$pr_data" ]; then
+              reason="PR not found in GitHub"
+            else
+              state=$(echo "$pr_data" | jq -r '.state')
+              updated=$(echo "$pr_data" | jq -r '.updated_at')
+              updated_ts=$(date -u -d "$updated" +%s)
+
+              if [ "$state" = "closed" ]; then
+                reason="PR closed"
+              elif [ "$updated_ts" -lt "$inactivity_cutoff" ]; then
+                reason="inactive >${MAX_INACTIVE_DAYS}d (last updated ${updated})"
+              fi
+            fi
+
+            if [ -z "$reason" ]; then
+              echo "Keep PR #${pr_num} (open and active)"
+              continue
+            fi
+
+            echo "Delete PR #${pr_num}: ${reason}"
+            for id in ${pr_deployments[$pr_num]}; do
+              if curl -fsS -X DELETE \
+                  -H "Authorization: Bearer ${CF_API_TOKEN}" \
+                  "https://api.cloudflare.com/client/v4/accounts/${CF_ACCOUNT_ID}/pages/projects/${PROJECT}/deployments/${id}?force=true" > /dev/null; then
+                total_deleted=$((total_deleted+1))
+              else
+                echo "  (failed to delete $id)"
+              fi
+            done
+          done
+
+          echo "---"
+          echo "Scanned ${total_pr} PR(s); deleted ${total_deleted} deployment(s)."
+
+      - name: Update PR comment (on PR close only)
+        if: github.event_name == 'pull_request' && github.event.action == 'closed'
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: cloudflare-preview
+          message: |
+            ### 🧹 Preview cleaned up
+
+            Cloudflare Pages preview deployments for this PR have been deleted.
