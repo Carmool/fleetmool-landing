@@ -16,6 +16,18 @@ Hard-refresh after editing `styles.css` / `script.js`. The HTML files cache-bust
 
 `npm run preview` boots `wrangler pages dev dist` instead, which mirrors Cloudflare's response headers/edge behavior. Use it when debugging anything Pages-specific (cache, redirects).
 
+## Working without a local environment
+
+The user frequently runs Claude Code from a phone with **no local shell** — no Python, no Node, no curl, no browser-on-localhost. In that mode, treat PR previews as the verification surface in place of local dev:
+
+1. Make the change in the working tree as normal.
+2. Commit to a feature branch and push it; open or push to an existing PR. Draft PRs work fine.
+3. `.github/workflows/preview.yml` deploys to `https://preview-pr-<N>.fleetmool-landing.pages.dev` within ~30–60s. The URL is stable per PR — pushing more commits redeploys to the same link.
+4. Paste the URL back to the user. They open it in their phone browser; Cloudflare Access prompts for sign-in.
+5. **Ask them to confirm visually.** Don't try to curl from your sandbox to validate — previews are access-protected and curl will only see the login redirect.
+
+Don't suggest `python3 -m http.server`, `npm run dev`, or any `wrangler` command as the verification step in this mode. The preview URL is the substitute.
+
 ## Deploy
 
 Cloudflare Pages project **`fleetmool-landing`** (auto-created on first CI run). Pushes to `main` deploy to production via `.github/workflows/deploy.yml`.
