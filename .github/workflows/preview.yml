@@ -45,6 +45,6 @@ jobs:
           message: |
             ### 🔍 Preview ready
 
-            **https://${{ env.BRANCH }}.dev.fleetmool.com**
+            **https://${{ env.BRANCH }}.fleetmool-landing.pages.dev**
 
-            <sub>Commit <code>${{ github.event.pull_request.head.sha }}</code> · fallback <a href="https://${{ env.BRANCH }}.fleetmool-landing.pages.dev">${{ env.BRANCH }}.fleetmool-landing.pages.dev</a></sub>
+            <sub>Commit <code>${{ github.event.pull_request.head.sha }}</code></sub>

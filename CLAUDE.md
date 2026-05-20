@@ -32,7 +32,9 @@ cp index.html f4w.html styles.css script.js dist/
 
 ### PR previews
 
-Opening or pushing to a PR triggers `.github/workflows/preview.yml`, which deploys the branch to `https://preview-pr-<N>.dev.fleetmool.com` (PR number, stable across pushes — newer pushes overwrite the same URL). A sticky comment on the PR shows the link. The custom subdomain requires `*.dev.fleetmool.com` to be configured as a Pages preview-alias custom domain on the project (one-time Cloudflare dashboard step); the `<branch>.fleetmool-landing.pages.dev` fallback always works regardless.
+Opening or pushing to a PR triggers `.github/workflows/preview.yml`, which deploys the branch to `https://preview-pr-<N>.fleetmool-landing.pages.dev` — the auto-provisioned Cloudflare Pages alias for the branch. The URL is stable across pushes (PR-numbered), so newer commits overwrite the same URL. A sticky comment on the PR carries the link.
+
+A vanity custom subdomain (`preview-pr-N.dev.fleetmool.com`) was considered but skipped: Cloudflare Pages doesn't accept wildcard custom domains via the dashboard, and per-PR registration adds API surface that isn't worth the aesthetic. If revisited, options are a `*.dev.fleetmool.com` Worker router or a per-PR `Pages domains` API call in the workflow.
 
 `preview-cleanup.yml` deletes a PR's preview deployments when the PR is closed, and runs a daily sweep that also removes previews for PRs untouched for **14 days** (`MAX_INACTIVE_DAYS`, overridable on manual `workflow_dispatch`).
 
