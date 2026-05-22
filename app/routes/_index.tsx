@@ -1,6 +1,7 @@
 import type { MetaFunction } from "@remix-run/cloudflare";
 import { Nav } from "~/components/Nav";
 import { Footer } from "~/components/Footer";
+import { Hero } from "~/components/Hero";
 
 export const handle = { bodyPage: "index" };
 
@@ -17,7 +18,7 @@ export default function Index() {
   return (
     <>
       <Nav surface="fleetmool" />
-      {/* Hero lands in Task 21; further sections in Tasks 22-28 */}
+      <Hero />
       <Footer />
     </>
   );
