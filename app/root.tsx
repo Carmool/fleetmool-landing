@@ -9,6 +9,7 @@ import {
 import type { LinksFunction } from "@remix-run/cloudflare";
 
 import globalsHref from "./styles/globals.css?url";
+import { useSmoothAnchor } from "~/hooks/useSmoothAnchor";
 
 export const links: LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -25,6 +26,7 @@ type RouteHandle = { bodyPage?: string; bodyAccent?: string };
 export default function App() {
   const matches = useMatches();
   const leafHandle = (matches[matches.length - 1]?.handle ?? {}) as RouteHandle;
+  useSmoothAnchor();
 
   return (
     <html lang="es" data-lang="es">
