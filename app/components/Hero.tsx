@@ -1,5 +1,6 @@
 import { Reveal } from "./Reveal";
 import { WhatsAppCta } from "./WhatsAppCta";
+import { HeroDashboard } from "./HeroDashboard";
 import { whatsappUrl } from "~/lib/whatsapp";
 import { useReveal } from "~/hooks/useReveal";
 
@@ -59,7 +60,7 @@ export function Hero() {
           </div>
         </div>
       </div>
-      {/* HeroDashboard slot — added in Task 22 */}
+      <HeroDashboard />
     </section>
   );
 }
