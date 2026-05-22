@@ -2105,3 +2105,24 @@ section.section.loose { padding: 160px 0; }
   .ai-stage { grid-template-columns: 1fr; gap: 12px; }
 }
 }
+
+@layer base {
+  /* Mobile nav open state (replaces inline-style assignment from old script.js) */
+  @media (max-width: 768px) {
+    .nav-links[data-open="true"] {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      position: absolute;
+      top: 64px;
+      left: 0;
+      right: 0;
+      background: rgba(13, 11, 10, 0.96);
+      backdrop-filter: blur(14px);
+      padding: 16px 28px;
+      border-bottom: 1px solid var(--line-2);
+      z-index: 99;
+      gap: 8px;
+    }
+  }
+}
