@@ -3,6 +3,7 @@ import { Nav } from "~/components/Nav";
 import { Footer } from "~/components/Footer";
 import { Hero } from "~/components/Hero";
 import { TrustBar } from "~/components/TrustBar";
+import { EcoTabs } from "~/components/EcoTabs";
 
 export const handle = { bodyPage: "index" };
 
@@ -21,6 +22,7 @@ export default function Index() {
       <Nav surface="fleetmool" />
       <Hero />
       <TrustBar />
+      <EcoTabs />
       <Footer />
     </>
   );
