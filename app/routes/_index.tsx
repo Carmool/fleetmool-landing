@@ -2,6 +2,7 @@ import type { MetaFunction } from "@remix-run/cloudflare";
 import { Nav } from "~/components/Nav";
 import { Footer } from "~/components/Footer";
 import { Hero } from "~/components/Hero";
+import { TrustBar } from "~/components/TrustBar";
 
 export const handle = { bodyPage: "index" };
 
@@ -19,6 +20,7 @@ export default function Index() {
     <>
       <Nav surface="fleetmool" />
       <Hero />
+      <TrustBar />
       <Footer />
     </>
   );
