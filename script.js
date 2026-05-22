@@ -848,14 +848,23 @@ function initAnchors() {
 /* ── MOBILE NAV ──────────────────────────────────────────── */
 function initMobileNav() {
   const toggle = document.querySelector('.nav-mobile-toggle');
-  const links = document.querySelector('.nav-links');
-  if (!toggle || !links) return;
-  let open = false;
+  if (!toggle) return;
+  const setOpen = (v) => {
+    document.body.classList.toggle('nav-open', v);
+    toggle.setAttribute('aria-expanded', String(v));
+  };
   toggle.addEventListener('click', () => {
-    open = !open;
-    links.style.cssText = open
-      ? `display:flex;flex-direction:column;align-items:flex-start;position:absolute;top:64px;left:0;right:0;background:rgba(13,11,10,0.96);backdrop-filter:blur(14px);padding:16px 28px;border-bottom:1px solid var(--line-2);z-index:99;gap:8px;`
-      : '';
+    setOpen(!document.body.classList.contains('nav-open'));
+  });
+  document.querySelectorAll('.nav-links a, .nav-right a').forEach((a) => {
+    a.addEventListener('click', () => {
+      if (document.body.classList.contains('nav-open')) setOpen(false);
+    });
+  });
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 720 && document.body.classList.contains('nav-open')) {
+      setOpen(false);
+    }
   });
 }
 
