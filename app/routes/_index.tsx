@@ -1,4 +1,6 @@
 import type { MetaFunction } from "@remix-run/cloudflare";
+import { Nav } from "~/components/Nav";
+import { Footer } from "~/components/Footer";
 
 export const handle = { bodyPage: "index" };
 
@@ -13,9 +15,10 @@ export const meta: MetaFunction = () => [
 
 export default function Index() {
   return (
-    <main className="container" style={{ paddingTop: 120 }}>
-      <h1>Fleetmool</h1>
-      <p>Sections land in Phase 5.</p>
-    </main>
+    <>
+      <Nav surface="fleetmool" />
+      {/* Hero lands in Task 21; further sections in Tasks 22-28 */}
+      <Footer />
+    </>
   );
 }
