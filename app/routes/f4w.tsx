@@ -13,9 +13,9 @@ export const meta: MetaFunction = () => [
 
 export default function F4W() {
   return (
-    <main style={{ padding: 40, color: "white", background: "#0D0B0A", minHeight: "100vh" }}>
-      <h1>F4W — scaffolding alive</h1>
-      <p>This placeholder gets replaced section-by-section in later tasks.</p>
+    <main className="container" style={{ paddingTop: 120 }}>
+      <h1>F4W</h1>
+      <p>Sections land in Phase 5.</p>
     </main>
   );
 }
