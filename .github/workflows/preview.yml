@@ -4,8 +4,6 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
 
-# Cancel in-flight runs for the same PR when a newer push arrives — the URL
-# is stable per PR, so a stale deploy would just overwrite the newer one.
 concurrency:
   group: preview-pr-${{ github.event.pull_request.number }}
   cancel-in-progress: true
@@ -13,7 +11,6 @@ concurrency:
 jobs:
   preview:
     runs-on: ubuntu-latest
-    # Forks don't get repo secrets, so the deploy would fail. Skip cleanly.
     if: github.event.pull_request.head.repo.full_name == github.repository
     permissions:
       contents: read
@@ -23,20 +20,19 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+      - uses: oven-sh/setup-bun@v2
         with:
-          node-version: '22'
-          cache: 'npm'
+          bun-version: latest
 
-      - run: npm ci
-      - run: npm run build
+      - run: bun install --frozen-lockfile
+      - run: bun run build
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy dist --project-name=fleetmool-landing --branch=${{ env.BRANCH }}
+          command: pages deploy build/client --project-name=fleetmool-landing --branch=${{ env.BRANCH }}
 
       - name: Comment preview URL on PR
         uses: marocchino/sticky-pull-request-comment@v2
