@@ -4,6 +4,7 @@ import { Footer } from "~/components/Footer";
 import { F4WHero } from "~/components/F4WHero";
 import { F4WTrustBar } from "~/components/F4WTrustBar";
 import { F4WFeatures } from "~/components/F4WFeatures";
+import { ComparisonTable } from "~/components/ComparisonTable";
 import { F4WTestimonial } from "~/components/F4WTestimonial";
 import { F4WEcoCallout } from "~/components/F4WEcoCallout";
 
@@ -25,9 +26,9 @@ export default function F4W() {
       <F4WHero />
       <F4WTrustBar />
       <F4WFeatures />
+      <ComparisonTable />
       <F4WTestimonial />
       <F4WEcoCallout />
-      {/* ComparisonTable in Task 31 */}
       {/* Pricing + FinalCta in Task 32 */}
       <Footer />
     </>
