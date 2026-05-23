@@ -1,6 +1,11 @@
 import type { MetaFunction } from "@remix-run/cloudflare";
 import { Nav } from "~/components/Nav";
 import { Footer } from "~/components/Footer";
+import { F4WHero } from "~/components/F4WHero";
+import { F4WTrustBar } from "~/components/F4WTrustBar";
+import { F4WFeatures } from "~/components/F4WFeatures";
+import { F4WTestimonial } from "~/components/F4WTestimonial";
+import { F4WEcoCallout } from "~/components/F4WEcoCallout";
 
 export const handle = { bodyPage: "f4w", bodyAccent: "blue" };
 
@@ -17,7 +22,13 @@ export default function F4W() {
   return (
     <>
       <Nav surface="f4w" />
-      {/* F4W sections land in Tasks 30-32 */}
+      <F4WHero />
+      <F4WTrustBar />
+      <F4WFeatures />
+      <F4WTestimonial />
+      <F4WEcoCallout />
+      {/* ComparisonTable in Task 31 */}
+      {/* Pricing + FinalCta in Task 32 */}
       <Footer />
     </>
   );
