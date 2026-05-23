@@ -10,6 +10,8 @@ export const PRESETS = {
     signin: "Hola! Quisiera iniciar sesión en F4W",
     trial: "Hola! Quiero registrar mi taller en F4W",
     demo: "Hola! Quisiera ver una demo de F4W",
+    pro: "Hola! Quiero registrar mi taller en F4W Pro",
+    enterprise: "Hola! Quisiera información sobre F4W Multi-sucursal",
   },
 } as const;
 

@@ -7,6 +7,8 @@ import { F4WFeatures } from "~/components/F4WFeatures";
 import { ComparisonTable } from "~/components/ComparisonTable";
 import { F4WTestimonial } from "~/components/F4WTestimonial";
 import { F4WEcoCallout } from "~/components/F4WEcoCallout";
+import { Pricing } from "~/components/Pricing";
+import { FinalCta } from "~/components/FinalCta";
 
 export const handle = { bodyPage: "f4w", bodyAccent: "blue" };
 
@@ -29,7 +31,8 @@ export default function F4W() {
       <ComparisonTable />
       <F4WTestimonial />
       <F4WEcoCallout />
-      {/* Pricing + FinalCta in Task 32 */}
+      <Pricing surface="f4w" />
+      <FinalCta surface="f4w" />
       <Footer />
     </>
   );
