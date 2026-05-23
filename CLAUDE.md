@@ -4,43 +4,40 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project
 
-Static marketing site for **Fleetmool** (fleet operations) and **F4W / Fleetmool for Workshops**, targeted at Mexico & LATAM. Pure vanilla HTML/CSS/JS — no framework, no transpiler. `package.json` exists only to pin `wrangler` for Cloudflare Pages deployment.
+Remix app served on Cloudflare Pages. Two routes (`/`, `/f4w`) sharing a global stylesheet and a React component library. Bun is the package manager and dev script runner (Cloudflare's Workers runtime is what runs in production). Tailwind v4 + shadcn/ui are installed but reserved for new components — the existing marketing chrome uses the ported `styles.css` under `@layer base` in `app/styles/globals.css`.
 
 ## Run locally
 
 ```bash
-python3 -m http.server 8080   # http://localhost:8080
+bun install
+bun dev          # http://localhost:5173, with HMR
 ```
 
-Hard-refresh after editing `styles.css` / `script.js`. The HTML files cache-bust with `?v=N` on the stylesheet link (`<link rel="stylesheet" href="styles.css?v=9">`) — **bump that integer in both `index.html` and `f4w.html`** when shipping CSS or JS changes you need to land for returning visitors. The two files must stay in sync.
+`bun run preview` builds and serves through `wrangler pages dev ./build/client`, mirroring Cloudflare's edge behavior. Use it when debugging anything Pages-specific (cache, redirects).
 
-`npm run preview` boots `wrangler pages dev dist` instead, which mirrors Cloudflare's response headers/edge behavior. Use it when debugging anything Pages-specific (cache, redirects).
+The previous `python3 -m http.server` workflow is gone — there's no longer a static file at the repo root to serve.
 
 ## Working without a local environment
 
 The user frequently runs Claude Code from a phone with **no local shell** — no Python, no Node, no curl, no browser-on-localhost. In that mode, treat PR previews as the verification surface in place of local dev:
 
-1. Make the change in the working tree as normal.
+1. Make the change in `app/` as normal.
 2. Commit to a feature branch and push it; open or push to an existing PR. Draft PRs work fine.
 3. `.github/workflows/preview.yml` deploys to `https://preview-pr-<N>.fleetmool-landing.pages.dev` within ~30–60s. The URL is stable per PR — pushing more commits redeploys to the same link.
 4. Paste the URL back to the user. They open it in their phone browser; Cloudflare Access prompts for sign-in.
 5. **Ask them to confirm visually.** Don't try to curl from your sandbox to validate — previews are access-protected and curl will only see the login redirect.
 
-Don't suggest `python3 -m http.server`, `npm run dev`, or any `wrangler` command as the verification step in this mode. The preview URL is the substitute.
+Don't suggest `bun dev`, `wrangler`, or any local command as the verification step in this mode. The preview URL is the substitute.
 
 ## Deploy
 
 Cloudflare Pages project **`fleetmool-landing`** (auto-created on first CI run). Pushes to `main` deploy to production via `.github/workflows/deploy.yml`.
 
-`npm run build` is a literal copy step:
+`bun run build` runs `remix vite:build`, which writes the client bundle to `build/client/` and the server bundle to `build/server/`.
 
-```
-cp index.html f4w.html styles.css script.js dist/
-```
+**To add a new static asset** (image, font, etc.), place it in `public/` — Vite copies it verbatim into `build/client/`. To reference it in a component, import it via JSX or use an absolute `/` path.
 
-**Add any new top-level asset (image, font, third HTML page) to that `cp` list in `package.json`** — anything not listed is silently dropped. The explicit allowlist is what keeps `CLAUDE.md`, `README.md`, `.remember/`, etc. out of the public bundle.
-
-`npm run deploy` runs build + `wrangler pages deploy` locally. Without `--branch=main` (CI passes it; the local script doesn't) it creates a **preview** deployment — useful for sharing a one-off URL without overwriting production.
+`bun run deploy` runs build + `wrangler pages deploy` locally. Without `--branch=main` (CI passes it; the local script doesn't) it creates a **preview** deployment — useful for sharing a one-off URL without overwriting production.
 
 ### PR previews
 
@@ -54,49 +51,14 @@ Required GitHub Actions secrets: `CLOUDFLARE_API_TOKEN` (scoped to `Cloudflare P
 
 ## Architecture
 
-`index.html` (Fleetmool, `<body data-page="index">`) and `f4w.html` (F4W, `<body data-page="f4w" data-accent="blue">`) share `styles.css` and `script.js`. Every JS module is feature-detected by root selector and no-ops when its anchor is absent, so the same script serves both pages without branching.
-
-### Accent theming via `data-accent`
-
-`:root` defines tokens with the Fleetmool **oxblood** (`#9F1F2E`) as the primary accent, named `--red`, `--red-hover`, `--red-text`, `--red-glow-rgb`, etc. `body[data-accent="blue"]` (F4W) **rebinds the same `--red*` slots** to cobalt (`#2563EB`). All downstream components (buttons, badges, gradients, glows, links) reference only the `--red*` names.
-
-**To add another accent**: append a `body[data-accent="X"] { --red: ...; --red-hover: ...; ... }` block in section 2 of `styles.css`. Do **not** introduce parallel `--blue-primary` / `--green-primary` tokens — that breaks the rebinding pattern.
-
-### `styles.css` structure
-
-~2000 lines, numbered sections marked with `/* ── N. TITLE ── */`. Order is **primitives → in-DOM-order sections → utilities**:
-
-1. Reset, tokens (`:root`), base, typography, layout — sections 1–5
-2. Primitives reused everywhere (nav, buttons, chips) — sections 6–8
-3. Page sections in roughly the order they appear in `index.html` (hero with dashboard mockup, trust bar, ecosystem tabs, feature stories, AI, connected workflow, metrics, cases, pricing, final CTA, footer) — sections 9–20
-4. Cross-cutting at the end: reveal animation (21), F4W comparison table (21b), responsive overrides (22)
-
-When adding a new page section, slot the CSS at the matching numbered position rather than appending — the file is read top-to-bottom for review.
-
-### i18n: `data-t` keys + central `T` dictionary
-
-Translations live entirely in `script.js` in `const T = { es: {...}, en: {...} }`. `setLanguage(lang)` walks every `[data-t="namespace.key"]` element and writes `T[lang][namespace][key]` into `textContent`.
-
-When adding copy:
-
-1. Pick a namespace (`hero`, `pricing`, `f4w_hero`, `ecosystem`, `footer`, …) and a key.
-2. Add the string to **both** `T.es` **and** `T.en`. A missing key leaves the original HTML text in place — no warning, no error. Run through both locales after adding strings (`localStorage.setItem('fm-lang', 'en'); location.reload()`).
-3. Set `data-t="namespace.key"` on the element. The default text in the HTML markup should be the **Spanish** version (the site is Spanish-first; LATAM is the primary market).
-4. `<title>` is **not** driven by `data-t` — it's special-cased per page inside `setLanguage()`. If you rename the page or add a new one, update that block.
-
-Language detection order (`detectLanguage()`): stored `localStorage.fm-lang` → timezone heuristic (Mexico TZs → `es`, US/Canada TZs → `en`) → `navigator.language` → default `es`. **There is intentionally no UI language toggle** — don't add one without product approval.
-
-### Interactive modules in `script.js`
-
-All initialized in the `DOMContentLoaded` handler at the bottom of the file. Each is gated by a single root selector and silently exits if absent:
-
-- `initReveal()` — IntersectionObserver adds `.visible` to `.reveal` elements. Stagger with `.d1`–`.d4` (250ms per step). Each element is observed once then released.
-- `initCounters()` — animates `[data-counter="500"][data-counter-suffix="+"]`. The attribute is the **numeric target**; the rendered HTML text is replaced during the 1.6s ease-out animation.
-- `initEcoTabs()` — segmented pill on the Ecosystem section (`#eco-switcher` → `.eco-panel[data-side]`). Re-measures slider position on resize and after `document.fonts.ready` (the Hanken Grotesk fallback would otherwise misposition it on first paint).
-- `initAiAnimation()` — cycles `.ai-node.active` and randomizes `.ai-sensor-bar` heights on each loop in `#ai-viz`.
-- `initFlowAutoplay()` — autoplays `.flow-step` in `#flow-list` every 4s. Any click on a step **permanently** stops autoplay (`.user-stopped`); pauses while tab is hidden via `visibilitychange`.
-- `initNav()`, `initAnchors()`, `initMobileNav()` — sticky-nav scroll state (`.scrolled` after 16px), smooth-scroll with a **72px header offset** (hard-coded — adjust if nav height changes), hamburger menu.
+- **Routes:** `app/routes/_index.tsx` (Fleetmool, `/`) and `app/routes/f4w.tsx` (F4W, `/f4w`). Each route exports a `handle` like `{ bodyPage, bodyAccent? }`; `app/root.tsx` reads it via `useMatches()` and renders `<body data-page={...} data-accent={...}>` for SSR-correct accent theming.
+- **Components:** `app/components/` — `Nav`, `Footer`, `WhatsAppCta`, `Hero`, `HeroDashboard`, `TrustBar`, `EcoTabs`, `FeatureStories`, `AiViz`, `ConnectedFlow`, `Metrics`, `CaseStudies`, `Pricing`, `FinalCta` (Fleetmool) + `F4WHero`, `F4WHeroDashboard`, `F4WTrustBar`, `F4WFeatures`, `F4WTestimonial`, `F4WEcoCallout`, `ComparisonTable` (F4W-specific). `Pricing` and `FinalCta` take a `surface` prop and render either variant.
+- **Hooks:** `app/hooks/` — `useReveal`, `useCounter`, `useNavScrolled`, `useSmoothAnchor` (replaces the old `init*` functions in `script.js`).
+- **Lib:** `app/lib/whatsapp.ts` centralizes the WA number + preset messages. `app/lib/utils.ts` is the shadcn `cn()` helper.
+- **Styles:** `app/styles/globals.css` imports Tailwind v4, declares shadcn's `@theme`, then ports the entire pre-Remix `styles.css` under `@layer base` (preserves `:root` tokens like `--red`/`--ink` that drive every marketing component).
+- **Accent theming:** unchanged — `body[data-accent="blue"]` rebinds `--red` to cobalt for F4W. **To add another accent**: append a `body[data-accent="X"] { --red: ...; --red-hover: ...; ... }` block in `globals.css`. Do **not** introduce parallel `--blue-primary` / `--green-primary` tokens — that breaks the rebinding pattern.
+- **i18n:** removed in this migration. The site is Spanish-only now. The `data-t` attribute system from the static era was dropped.
 
 ### CTAs are WhatsApp deep links
 
-All primary CTAs are `https://wa.me/525573221028?text=<url-encoded-message>`. The number is **hard-coded in both HTML files** (~21 occurrences total). When changing it, search-replace across `index.html` and `f4w.html`; `script.js` has none. Preset messages differ by surface: F4W ones reference "F4W" / "mi taller", Fleetmool ones reference "Fleetmool" / "mi flota" — preserve this when adding new CTAs so WhatsApp routing on the receiving end can disambiguate.
+All primary CTAs are `https://wa.me/525573221028?text=<url-encoded-message>`. The number and preset messages are **centralized in `app/lib/whatsapp.ts`** — one edit changes every CTA everywhere. Preset messages differ by surface: F4W ones reference "F4W" / "mi taller", Fleetmool ones reference "Fleetmool" / "mi flota" — preserve this distinction when adding new CTAs so WhatsApp routing on the receiving end can disambiguate.
