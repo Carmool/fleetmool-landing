@@ -7,6 +7,10 @@ import { EcoTabs } from "~/components/EcoTabs";
 import { FeatureStories } from "~/components/FeatureStories";
 import { AiViz } from "~/components/AiViz";
 import { ConnectedFlow } from "~/components/ConnectedFlow";
+import { Metrics } from "~/components/Metrics";
+import { CaseStudies } from "~/components/CaseStudies";
+import { Pricing } from "~/components/Pricing";
+import { FinalCta } from "~/components/FinalCta";
 
 export const handle = { bodyPage: "index" };
 
@@ -29,6 +33,10 @@ export default function Index() {
       <FeatureStories />
       <AiViz />
       <ConnectedFlow />
+      <Metrics />
+      <CaseStudies />
+      <Pricing />
+      <FinalCta />
       <Footer />
     </>
   );
