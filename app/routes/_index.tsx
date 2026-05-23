@@ -6,6 +6,7 @@ import { TrustBar } from "~/components/TrustBar";
 import { EcoTabs } from "~/components/EcoTabs";
 import { FeatureStories } from "~/components/FeatureStories";
 import { AiViz } from "~/components/AiViz";
+import { ConnectedFlow } from "~/components/ConnectedFlow";
 
 export const handle = { bodyPage: "index" };
 
@@ -27,6 +28,7 @@ export default function Index() {
       <EcoTabs />
       <FeatureStories />
       <AiViz />
+      <ConnectedFlow />
       <Footer />
     </>
   );
