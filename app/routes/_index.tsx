@@ -5,6 +5,7 @@ import { Hero } from "~/components/Hero";
 import { TrustBar } from "~/components/TrustBar";
 import { EcoTabs } from "~/components/EcoTabs";
 import { FeatureStories } from "~/components/FeatureStories";
+import { AiViz } from "~/components/AiViz";
 
 export const handle = { bodyPage: "index" };
 
@@ -25,6 +26,7 @@ export default function Index() {
       <TrustBar />
       <EcoTabs />
       <FeatureStories />
+      <AiViz />
       <Footer />
     </>
   );
