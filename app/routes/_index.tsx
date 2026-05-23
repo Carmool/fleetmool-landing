@@ -4,6 +4,7 @@ import { Footer } from "~/components/Footer";
 import { Hero } from "~/components/Hero";
 import { TrustBar } from "~/components/TrustBar";
 import { EcoTabs } from "~/components/EcoTabs";
+import { FeatureStories } from "~/components/FeatureStories";
 
 export const handle = { bodyPage: "index" };
 
@@ -23,6 +24,7 @@ export default function Index() {
       <Hero />
       <TrustBar />
       <EcoTabs />
+      <FeatureStories />
       <Footer />
     </>
   );
