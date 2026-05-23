@@ -1,4 +1,6 @@
 import type { MetaFunction } from "@remix-run/cloudflare";
+import { Nav } from "~/components/Nav";
+import { Footer } from "~/components/Footer";
 
 export const handle = { bodyPage: "f4w", bodyAccent: "blue" };
 
@@ -13,9 +15,10 @@ export const meta: MetaFunction = () => [
 
 export default function F4W() {
   return (
-    <main className="container" style={{ paddingTop: 120 }}>
-      <h1>F4W</h1>
-      <p>Sections land in Phase 5.</p>
-    </main>
+    <>
+      <Nav surface="f4w" />
+      {/* F4W sections land in Tasks 30-32 */}
+      <Footer />
+    </>
   );
 }
