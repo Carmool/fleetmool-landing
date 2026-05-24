@@ -217,9 +217,16 @@ input, button, textarea, select { font: inherit; }
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
 
-  /* Layout */
-  --container: 1240px;
-  --container-narrow: 960px;
+  /* Layout — nav spans wider than content for clear visual hierarchy */
+  --nav-w: 1280px;          /* nav stretches wider across the viewport */
+  --container: 1120px;       /* content sections sit in a tighter column */
+  --container-narrow: 860px;
+  /* Responsive horizontal gutter — Tailwind spacing-5 → spacing-8 */
+  --gutter: clamp(1.25rem, 3.5vw, 2rem);
+  /* Responsive section vertical padding */
+  --section-v: clamp(5rem, 10vw, 7.5rem);
+  --section-v-tight: clamp(3.5rem, 7vw, 5rem);
+  --section-v-loose: clamp(7rem, 13vw, 10rem);
 }
 
 /* F4W (workshops) — cobalt accent swap */
@@ -330,12 +337,12 @@ body {
   width: 100%;
   max-width: var(--container);
   margin: 0 auto;
-  padding: 0 28px;
+  padding: 0 var(--gutter);
 }
 .container.narrow { max-width: var(--container-narrow); }
-section.section { padding: 120px 0; }
-section.section.tight { padding: 80px 0; }
-section.section.loose { padding: 160px 0; }
+section.section { padding: var(--section-v) 0; }
+section.section.tight { padding: var(--section-v-tight) 0; }
+section.section.loose { padding: var(--section-v-loose) 0; }
 
 /* ── 6. NAV ────────────────────────────────────────────────── */
 .nav {
@@ -349,9 +356,9 @@ section.section.loose { padding: 160px 0; }
 }
 .nav-inner {
   width: 100%;
-  max-width: var(--container);
+  max-width: var(--nav-w);
   margin: 0 auto;
-  padding: 0 28px;
+  padding: 0 var(--gutter);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -599,9 +606,9 @@ section.section.loose { padding: 160px 0; }
 /* Hero dashboard panel */
 .hero-dashboard {
   position: relative;
-  max-width: 1180px;
+  max-width: var(--nav-w);
   margin: 24px auto 0;
-  padding: 0 28px;
+  padding: 0 var(--gutter);
 }
 .hero-dashboard-frame {
   position: relative;
@@ -2090,7 +2097,7 @@ section.section.loose { padding: 160px 0; }
 }
 
 @media (max-width: 720px) {
-  section.section { padding: 80px 0; }
+  section.section { padding: var(--section-v-tight) 0; }
   .nav-links { display: none; }
   .nav-mobile-toggle { display: block; }
   .hero { padding-top: 100px; }
@@ -2121,7 +2128,7 @@ section.section.loose { padding: 160px 0; }
       right: 0;
       background: rgba(13, 11, 10, 0.96);
       backdrop-filter: blur(14px);
-      padding: 16px 28px;
+      padding: 16px var(--gutter);
       border-bottom: 1px solid var(--line-2);
       z-index: 99;
       gap: 8px;
