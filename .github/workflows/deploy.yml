@@ -12,25 +12,21 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+      - uses: oven-sh/setup-bun@v2
         with:
-          node-version: '22'
-          cache: 'npm'
+          bun-version: latest
 
       - name: Install dependencies
-        run: npm ci
+        run: bun install --frozen-lockfile
 
-      - name: Build (copy static files to dist/)
-        run: npm run build
+      - name: Build Remix app
+        run: bun run build
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          # `project create` is idempotent across runs: first run creates the
-          # Pages project, later runs hit "already exists" and are skipped.
-          # The real deploy below surfaces any auth/config errors.
           preCommands: |
             wrangler pages project create fleetmool-landing --production-branch=main || true
-          command: pages deploy dist --project-name=fleetmool-landing --branch=main
+          command: pages deploy build/client --project-name=fleetmool-landing --branch=main
