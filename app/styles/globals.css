@@ -2128,3 +2128,15 @@ section.section.loose { padding: 160px 0; }
     }
   }
 }
+
+/* Override Tailwind v4's built-in .container utility, which generates
+   responsive max-width breakpoint rules in @layer utilities that beat
+   our @layer base styles. @utility replaces the built-in entirely. */
+@utility container {
+  width: 100%;
+  max-width: var(--container);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 28px;
+  padding-right: 28px;
+}
