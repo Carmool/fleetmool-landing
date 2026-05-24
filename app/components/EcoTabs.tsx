@@ -40,7 +40,7 @@ export function EcoTabs() {
       <div className="container">
         <div ref={secHeadRef} className="sec-head centered reveal">
           <div className="eyebrow">Ecosistema</div>
-          <h2 className="h-1">
+          <h2 className="h1">
             Una operación, dos lados.
             <br />
             <span className="text-ink-3">Sin fricción entre ellos.</span>

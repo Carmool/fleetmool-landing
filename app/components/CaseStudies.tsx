@@ -6,7 +6,7 @@ export function CaseStudies() {
       <div className="container">
         <Reveal className="sec-head">
           <div className="eyebrow">Historias</div>
-          <h2 className="h-1">
+          <h2 className="h1">
             Operaciones reales.
             <br />
             Resultados medibles.

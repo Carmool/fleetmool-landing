@@ -55,7 +55,7 @@ export function AiViz() {
         <div className="ai-inner">
           <Reveal className="ai-text">
             <div className="eyebrow">IA Operacional</div>
-            <h2 className="h-1">La IA trabaja antes de que llegue el problema.</h2>
+            <h2 className="h1">La IA trabaja antes de que llegue el problema.</h2>
             <p className="lede">
               Cada kilometraje, cada diagnóstico, cada condición de uso entrena el modelo. Detectamos señales de desgaste con días de anticipación — y te avisamos donde ya operas: WhatsApp.
             </p>

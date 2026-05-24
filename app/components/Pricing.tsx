@@ -146,7 +146,7 @@ export function Pricing({ surface = "fleetmool" }: { surface?: Surface }) {
       <div className="container">
         <Reveal className="sec-head centered">
           <div className="eyebrow">{data.eyebrow}</div>
-          <h2 className="h-1">{data.title}</h2>
+          <h2 className="h1">{data.title}</h2>
           <p className="lede">{data.subtitle}</p>
         </Reveal>
 

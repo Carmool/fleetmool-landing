@@ -63,7 +63,7 @@ export function ConnectedFlow() {
         <div className="connected-inner">
           <Reveal>
             <div className="eyebrow">Integración</div>
-            <h2 className="h-2" style={{ margin: "14px 0 18px" }}>
+            <h2 className="h2" style={{ margin: "14px 0 18px" }}>
               Del taller a tu tablero,<br />en tiempo real.
             </h2>
             <p className="body" style={{ fontSize: "16.5px" }}>

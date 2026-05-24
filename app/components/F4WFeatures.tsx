@@ -12,7 +12,7 @@ export function F4WFeatures() {
       <div className="container">
         <Reveal className="sec-head">
           <div className="eyebrow">Para talleres</div>
-          <h2 className="h-1">
+          <h2 className="h1">
             Tres herramientas que cambian<br />cómo trabaja tu taller.
           </h2>
           <p className="lede">

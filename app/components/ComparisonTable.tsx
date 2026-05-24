@@ -6,7 +6,7 @@ export function ComparisonTable() {
       <div className="container">
         <Reveal className="sec-head centered">
           <div className="eyebrow">Comparación</div>
-          <h2 className="h-1">
+          <h2 className="h1">
             La manera tradicional
             <br />
             vs. con F4W.

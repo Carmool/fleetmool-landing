@@ -74,7 +74,7 @@ export function FinalCta({ surface = "fleetmool" }: { surface?: Surface }) {
         <div className="cta-inner">
           <Reveal>
             <div className="eyebrow">{data.eyebrow}</div>
-            <h2 className="h-1">{data.title}</h2>
+            <h2 className="h1">{data.title}</h2>
             <p className="cta-sub">{data.subtitle}</p>
             <div className="cta-bullets">
               {data.bullets.map((b) => (

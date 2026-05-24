@@ -6,7 +6,7 @@ export function FeatureStories() {
       <div className="container">
         <Reveal className="sec-head">
           <div className="eyebrow">Para flotas</div>
-          <h2 className="h-1">
+          <h2 className="h1">
             Tres herramientas que cambian<br />cómo operas tu flota.
           </h2>
           <p className="lede">
