@@ -18,7 +18,7 @@ export function F4WEcoCallout() {
         </Reveal>
 
         <Reveal stagger={1} className="eco-stage" style={{ gridTemplateColumns: "1fr" }}>
-          <div style={{ padding: "56px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "56px", alignItems: "center" }}>
+          <div className="f4w-eco-inner">
             <div>
               <ul className="eco-features">
                 <li className="eco-feat">

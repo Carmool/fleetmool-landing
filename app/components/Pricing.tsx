@@ -1,3 +1,5 @@
+import { useState } from "react";
+import type { CSSProperties } from "react";
 import { Reveal } from "./Reveal";
 import { WhatsAppCta } from "./WhatsAppCta";
 import { WA_NUMBER } from "~/lib/whatsapp";
@@ -7,6 +9,18 @@ type Surface = "fleetmool" | "f4w";
 const CheckIcon = () => (
   <svg viewBox="0 0 16 16" fill="none" strokeWidth="2">
     <path d="M3 8l3 3 7-7" />
+  </svg>
+);
+
+const ArrowLeft = () => (
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M10 3L5 8L10 13" />
+  </svg>
+);
+
+const ArrowRight = () => (
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M6 3L11 8L6 13" />
   </svg>
 );
 
@@ -140,6 +154,9 @@ const F4W = {
 
 export function Pricing({ surface = "fleetmool" }: { surface?: Surface }) {
   const data = surface === "f4w" ? F4W : FLEETMOOL;
+  const [activeIndex, setActiveIndex] = useState(() =>
+    data.plans.findIndex((p) => p.featured)
+  );
 
   return (
     <section className="section pricing" id="pricing">
@@ -151,48 +168,86 @@ export function Pricing({ surface = "fleetmool" }: { surface?: Surface }) {
         </Reveal>
 
         <div className="pricing-grid">
-          {data.plans.map((plan) => (
-            <Reveal
-              key={plan.name}
-              stagger={plan.stagger}
-              className={["price", plan.featured ? "featured" : ""].filter(Boolean).join(" ")}
+          {/* pricing-track: display:contents on desktop (cards join the grid directly),
+              flex slider on mobile */}
+          <div
+            className="pricing-track"
+            style={{ "--pricing-active": activeIndex } as CSSProperties}
+          >
+            {data.plans.map((plan, i) => (
+              <Reveal
+                key={plan.name}
+                stagger={plan.stagger}
+                className={["price", plan.featured ? "featured" : ""].filter(Boolean).join(" ")}
+                data-active={i === activeIndex}
+              >
+                {plan.badge && <span className="price-badge">{plan.badge}</span>}
+                <div className="price-name">{plan.name}</div>
+                <div className="price-price">
+                  {plan.currency && <span className="currency">{plan.currency}</span>}
+                  <div className="v">{plan.price}</div>
+                </div>
+                <div className="price-cycle">{plan.cycle}</div>
+                <p className="price-desc">{plan.desc}</p>
+                <ul className="price-feats">
+                  {plan.features.map((feat) => (
+                    <li key={feat} className="price-feat">
+                      <CheckIcon />
+                      <span>{feat}</span>
+                    </li>
+                  ))}
+                </ul>
+                {"href" in plan.cta ? (
+                  <a
+                    href={plan.cta.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`btn btn-${plan.cta.variant}`}
+                  >
+                    {plan.cta.label}
+                  </a>
+                ) : (
+                  <WhatsAppCta
+                    surface={surface}
+                    preset={plan.cta.preset}
+                    variant={plan.cta.variant}
+                  >
+                    {plan.cta.label}
+                  </WhatsAppCta>
+                )}
+              </Reveal>
+            ))}
+          </div>
+
+          {/* Carousel controls — only visible on mobile via CSS */}
+          <div className="pricing-carousel-nav">
+            <button
+              className="pricing-carousel-arrow"
+              onClick={() => setActiveIndex((i) => Math.max(0, i - 1))}
+              disabled={activeIndex === 0}
+              aria-label="Plan anterior"
             >
-              {plan.badge && <span className="price-badge">{plan.badge}</span>}
-              <div className="price-name">{plan.name}</div>
-              <div className="price-price">
-                {plan.currency && <span className="currency">{plan.currency}</span>}
-                <div className="v">{plan.price}</div>
-              </div>
-              <div className="price-cycle">{plan.cycle}</div>
-              <p className="price-desc">{plan.desc}</p>
-              <ul className="price-feats">
-                {plan.features.map((feat) => (
-                  <li key={feat} className="price-feat">
-                    <CheckIcon />
-                    <span>{feat}</span>
-                  </li>
-                ))}
-              </ul>
-              {"href" in plan.cta ? (
-                <a
-                  href={plan.cta.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`btn btn-${plan.cta.variant}`}
-                >
-                  {plan.cta.label}
-                </a>
-              ) : (
-                <WhatsAppCta
-                  surface={surface}
-                  preset={plan.cta.preset}
-                  variant={plan.cta.variant}
-                >
-                  {plan.cta.label}
-                </WhatsAppCta>
-              )}
-            </Reveal>
-          ))}
+              <ArrowLeft />
+            </button>
+            <div className="pricing-dots">
+              {data.plans.map((_, i) => (
+                <button
+                  key={i}
+                  className={`pricing-dot${i === activeIndex ? " active" : ""}`}
+                  onClick={() => setActiveIndex(i)}
+                  aria-label={`Ver plan ${i + 1}`}
+                />
+              ))}
+            </div>
+            <button
+              className="pricing-carousel-arrow"
+              onClick={() => setActiveIndex((i) => Math.min(data.plans.length - 1, i + 1))}
+              disabled={activeIndex === data.plans.length - 1}
+              aria-label="Plan siguiente"
+            >
+              <ArrowRight />
+            </button>
+          </div>
         </div>
       </div>
     </section>
