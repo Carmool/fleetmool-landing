@@ -7,6 +7,7 @@ import {
   useMatches,
 } from "@remix-run/react";
 import type { LinksFunction } from "@remix-run/cloudflare";
+import { useEffect } from "react";
 
 import globalsHref from "./styles/globals.css?url";
 import { useSmoothAnchor } from "~/hooks/useSmoothAnchor";
@@ -27,6 +28,10 @@ export default function App() {
   const matches = useMatches();
   const leafHandle = (matches[matches.length - 1]?.handle ?? {}) as RouteHandle;
   useSmoothAnchor();
+
+  useEffect(() => {
+    document.documentElement.classList.add("hydrated");
+  }, []);
 
   return (
     <html lang="es" data-lang="es">
