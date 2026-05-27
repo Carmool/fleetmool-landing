@@ -3,7 +3,7 @@ import { Reveal } from "./Reveal";
 
 export function F4WEcoCallout() {
   return (
-    <section className="section ecosystem">
+    <section className="section ecosystem" id="ecosistema">
       <div className="container">
         <Reveal className="sec-head centered">
           <div className="eyebrow" style={{ color: "#E78892" }}>
