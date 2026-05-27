@@ -333,9 +333,9 @@ body {
   padding: 0 28px;
 }
 .container.narrow { max-width: var(--container-narrow); }
-section.section { padding: 120px 0; }
-section.section.tight { padding: 80px 0; }
-section.section.loose { padding: 160px 0; }
+section.section { padding: 96px 0; }
+section.section.tight { padding: 64px 0; }
+section.section.loose { padding: 130px 0; }
 
 /* ── 6. NAV ────────────────────────────────────────────────── */
 .nav {
@@ -1284,7 +1284,7 @@ section.section.loose { padding: 160px 0; }
   grid-template-columns: 1fr 1.15fr;
   gap: 80px;
   align-items: center;
-  padding: 88px 0;
+  padding: 68px 0;
   border-top: 1px solid var(--line);
 }
 .feature-story:first-of-type { border-top: none; }
@@ -1846,6 +1846,45 @@ section.section.loose { padding: 160px 0; }
 .case-author .n { font-size: 13.5px; font-weight: 600; color: var(--ink); letter-spacing: -0.005em; }
 .case-author .r { font-size: 12.5px; color: var(--ink-3); }
 
+/* ── F4W Ecosystem callout ────────────────────────────────── */
+.f4w-eco-inner {
+  padding: 56px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+
+/* ── F4W Testimonial layout ───────────────────────────────── */
+.f4w-testimonial-result { padding: 32px 40px; }
+.f4w-testimonial-row {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+  width: 100%;
+}
+.f4w-testimonial-metric { flex-shrink: 0; }
+.f4w-testimonial-quote {
+  flex: 1;
+  padding-left: 32px;
+  border-left: 1px solid var(--blue-soft);
+}
+.f4w-testimonial-company {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 14px;
+}
+.f4w-testimonial-text {
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--ink);
+  letter-spacing: -0.012em;
+  margin: 0;
+}
+
 /* ── 18. PRICING ──────────────────────────────────────────── */
 .pricing { background: var(--bg); }
 .pricing-grid {
@@ -1944,6 +1983,45 @@ section.section.loose { padding: 160px 0; }
   stroke: var(--green-bright);
 }
 .price .btn { width: 100%; justify-content: center; }
+
+/* ── 18b. PRICING CAROUSEL (mobile only) ─────────────────── */
+/* On desktop the track is invisible to layout — cards slot into the grid */
+.pricing-track { display: contents; }
+.pricing-carousel-nav { display: none; }
+
+.pricing-carousel-arrow {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--line-2);
+  background: var(--surface);
+  color: var(--ink-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  flex-shrink: 0;
+}
+.pricing-carousel-arrow:hover:not(:disabled) {
+  background: var(--surface-2);
+  color: var(--ink);
+  border-color: var(--line-3);
+}
+.pricing-carousel-arrow:disabled { opacity: 0.3; cursor: default; }
+
+.pricing-dots { display: flex; gap: 8px; align-items: center; }
+.pricing-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--line-3);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+.pricing-dot.active {
+  background: var(--red);
+  transform: scale(1.3);
+}
 
 /* ── 19. FINAL CTA ────────────────────────────────────────── */
 .cta {
@@ -2142,6 +2220,8 @@ section.section.loose { padding: 160px 0; }
 }
 
 /* ── 22. RESPONSIVE ───────────────────────────────────────── */
+
+/* ─ Tablet landscape (≤1080px) ──────────────────────────── */
 @media (max-width: 1080px) {
   .feature-story, .feature-story.flip { grid-template-columns: 1fr; gap: 36px; }
   .feature-story.flip .feature-text { order: 1; }
@@ -2161,24 +2241,159 @@ section.section.loose { padding: 160px 0; }
   .price.featured { transform: none; }
   .compare-row { grid-template-columns: 1fr 1fr; }
   .compare-row .col.label { grid-column: 1 / -1; padding: 12px 20px; border-right: none; border-bottom: 1px solid var(--line); background: var(--surface-2); }
+  /* Dashboard stats 2-up at tablet */
+  .dash-stats { grid-template-columns: repeat(2, 1fr); }
+  /* Trust logos 3-up at tablet */
+  .trust-logos { grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  /* AI stats 2-up at tablet */
+  .ai-stats { grid-template-columns: 1fr 1fr; }
 }
 
+/* ─ Mobile (≤720px) ─────────────────────────────────────── */
 @media (max-width: 720px) {
-  section.section { padding: 80px 0; }
+  section.section { padding: 64px 0; }
+  section.section.tight { padding: 44px 0; }
   .nav-links { display: none; }
   .nav-mobile-toggle { display: block; }
+  /* Hide sign-in ghost link — keep only primary CTA + hamburger */
+  .nav-right .btn-ghost { display: none; }
+  /* Hero */
   .hero { padding-top: 100px; }
-  .hero-inner { padding: 24px 0 40px; }
-  .hero h1 { font-size: 44px; }
-  .dash { grid-template-columns: 1fr; height: auto; max-height: 600px; }
+  .hero-inner { padding: 20px 0 36px; }
+  .hero h1 { font-size: 42px; }
+  .hero-sub { font-size: 16px; }
+  .hero-eyebrow-pill { font-size: 11px; }
+  .hero-dashboard { padding: 0 16px; }
+  /* Dashboard mockup — show only KPI cards on mobile */
+  .dash { grid-template-columns: 1fr; height: auto; }
   .dash-side { display: none; }
-  .trust-logos { grid-template-columns: 1fr 1fr 1fr; gap: 18px; }
-  .footer-grid { grid-template-columns: 1fr; }
+  .dash-top { display: none; }
+  .dash-section-h { display: none; }
+  .dash-table { display: none; }
+  .dash-ai { display: none; }
+  .dash-body { padding: 16px; gap: 0; }
+  .dash-stats { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  /* Trust */
+  .trust { padding: 40px 0 24px; }
+  .trust-logos { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  /* Section headers */
+  .sec-head { margin-bottom: 36px; }
+  /* Ecosystem */
+  .eco-text { padding: 24px; gap: 16px; }
+  .eco-text h3 { font-size: 26px; }
+  .eco-viz { padding: 24px; min-height: 240px; }
+  /* Feature stories */
+  .feature-story { padding: 60px 0; gap: 24px; }
+  .feature-art { min-height: 280px; }
+  /* AI — hide visualization box on mobile, stats alone tell the story */
+  .ai-viz { display: none; }
+  .ai-stats { grid-template-columns: 1fr; gap: 12px; margin-top: 24px; padding-top: 20px; }
+  /* Hide interactive flow steps — invisible on dark bg, text + CTAs tell the story */
+  .flow-list { display: none; }
+  /* Metrics */
   .metrics-grid { grid-template-columns: 1fr; }
   .metric { border-right: none; border-bottom: 1px solid var(--line); }
   .metric:last-child { border-bottom: none; }
-  .feature-art { min-height: 320px; }
-  .ai-stage { grid-template-columns: 1fr; gap: 12px; }
+  /* Comparison table — stacked card per feature */
+  .compare-row.head { display: none; }
+  .compare-row { display: flex; flex-direction: column; }
+  .compare-row .col { padding: 12px 16px; font-size: 14px; }
+  .compare-row .col.label {
+    border-right: none;
+    background: var(--surface-2);
+    border-bottom: 1px solid var(--line);
+    padding: 10px 16px 8px;
+  }
+  .compare-row .col.us { border-left: none; border-top: 1px solid var(--red-soft); }
+  /* Pricing carousel */
+  .pricing-grid { display: block; overflow: hidden; }
+  .pricing-track {
+    display: flex;
+    width: 300%;
+    transform: translateX(calc(var(--pricing-active, 1) * -33.3334%));
+    transition: transform 0.35s var(--ease);
+    will-change: transform;
+    align-items: stretch;
+  }
+  .pricing-track .price {
+    width: calc(100% / 3);
+    min-width: 0;
+    flex-shrink: 0;
+    box-sizing: border-box;
+  }
+  /* Override reveal fade-in — all cards must be visible in the slider */
+  .pricing-track .reveal { opacity: 1; transform: none; transition: none; }
+  .pricing-carousel-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 20px;
+  }
+  /* F4W Ecosystem callout — stack vertically */
+  .f4w-eco-inner { grid-template-columns: 1fr; gap: 32px; padding: 28px 24px; }
+  /* F4W Testimonial — stack vertically */
+  .f4w-testimonial-result { padding: 24px; }
+  .f4w-testimonial-row { flex-direction: column; gap: 20px; align-items: flex-start; }
+  .f4w-testimonial-quote {
+    padding-left: 0;
+    border-left: none;
+    border-top: 1px solid var(--blue-soft);
+    padding-top: 20px;
+    width: 100%;
+  }
+  .f4w-testimonial-text { font-size: 16px; }
+  /* CTA */
+  .cta-inner { gap: 24px; }
+  .cta-card { padding: 24px; }
+  /* Footer */
+  .footer { padding: 48px 0 24px; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; align-items: center; gap: 8px; text-align: center; }
+}
+
+/* ─ Small mobile (≤480px) ──────────────────────────────── */
+@media (max-width: 480px) {
+  section.section { padding: 48px 0; }
+  section.section.tight { padding: 36px 0; }
+  /* Hero */
+  .hero { padding-top: 80px; }
+  .hero-inner { padding: 12px 0 24px; }
+  .hero h1 { font-size: 34px; }
+  .hero-sub { font-size: 15px; }
+  .hero-actions { flex-direction: column; align-items: stretch; }
+  .hero-actions .btn { justify-content: center; }
+  .hero-meta { flex-wrap: wrap; justify-content: center; }
+  .hero-dashboard { padding: 0 8px; margin-top: 12px; }
+  /* Trust */
+  .trust-logos { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  /* Section headers */
+  .sec-head { margin-bottom: 24px; }
+  /* Ecosystem */
+  .eco-text { padding: 18px; }
+  .eco-viz { padding: 16px; min-height: 200px; }
+  /* Hide role sub-label in tab switcher so it fits narrow screens */
+  .eco-tab .role { display: none; }
+  .eco-tab { font-size: 12.5px; padding: 7px 10px 7px 8px; gap: 5px; }
+  /* Feature stories */
+  .feature-story { padding: 44px 0; gap: 16px; }
+  .feature-art { min-height: 220px; }
+  /* AI */
+  .ai-viz { padding: 16px; }
+  .ai-node { padding: 12px; min-height: 110px; }
+  /* Metrics */
+  .metric { padding: 24px 20px; }
+  /* Comparison table — tighten padding at small sizes */
+  .compare-row .col { padding: 10px 14px; font-size: 13px; }
+  /* Pricing */
+  .pricing-grid { gap: 12px; }
+  .price { padding: 24px 20px; }
+  /* CTA */
+  .cta-sub { font-size: 16px; }
+  .cta-card { padding: 20px; }
+  /* Footer */
+  .footer { padding: 40px 0 20px; }
+  .footer-grid { gap: 24px; }
 }
 }
 
