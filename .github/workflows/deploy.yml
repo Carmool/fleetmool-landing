@@ -27,6 +27,6 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          preCommands: |
-            wrangler pages project create fleetmool-landing --production-branch=main || true
           command: pages deploy build/client --project-name=fleetmool-landing --branch=main
+        env:
+          WRANGLER_SEND_METRICS: "false"
