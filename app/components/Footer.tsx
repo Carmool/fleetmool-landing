@@ -7,9 +7,8 @@ export function Footer() {
         <div className="footer-grid">
           <div className="footer-brand">
             <div className="footer-brand-mark">
-              <Link to="/" className="nav-logo">
-                <span className="nav-logo-mark">F</span>
-                <span>Fleetmool</span>
+              <Link to="/" className="nav-logo" aria-label="Fleetmool">
+                <img src="/fleetmool-transparent.png" alt="Fleetmool" className="nav-logo-img" />
               </Link>
             </div>
             <p className="footer-desc" data-t="footer.desc">

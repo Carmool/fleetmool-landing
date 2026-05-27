@@ -2,7 +2,7 @@ import { Reveal } from "./Reveal";
 
 export function ComparisonTable() {
   return (
-    <section className="section connected">
+    <section className="section connected" id="comparacion">
       <div className="container">
         <Reveal className="sec-head centered">
           <div className="eyebrow">Comparación</div>
