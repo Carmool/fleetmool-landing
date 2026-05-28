@@ -27,14 +27,20 @@ export function Footer() {
           <div className="footer-col">
             <h5 data-t="footer.col2">Empresa</h5>
             <ul>
-              <li><a href="#" data-t="footer.l2_1">Acerca de</a></li>
-              <li><a href="#" data-t="footer.l2_2">Blog</a></li>
-              <li><a href="#" data-t="footer.l2_3">Trabaja con nosotros</a></li>
+              <li>
+                <a href="https://www.linkedin.com/company/fleetmool/about/" target="_blank" rel="noopener noreferrer" data-t="footer.l2_1">Acerca de</a>
+              </li>
+              <li>
+                <a href="https://www.linkedin.com/company/fleetmool/posts/" target="_blank" rel="noopener noreferrer" data-t="footer.l2_2">Blog</a>
+              </li>
+              <li>
+                <a href="https://www.linkedin.com/company/fleetmool/jobs/" target="_blank" rel="noopener noreferrer" data-t="footer.l2_3">Trabaja con nosotros</a>
+              </li>
               <li>
                 <a
                   href="https://wa.me/525573221028"
                   target="_blank"
-                  rel="noopener"
+                  rel="noopener noreferrer"
                   data-t="footer.l2_4"
                 >
                   Contacto

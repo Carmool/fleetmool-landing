@@ -131,9 +131,9 @@ export function Nav({ surface }: { surface: Surface }) {
         </div>
 
         <div className="nav-right">
-          <WhatsAppCta surface={surface} preset="signin" variant="ghost" size="sm">
+          <a href="https://app.fleetmool.com" target="_blank" rel="noopener noreferrer" className="btn btn-ghost btn-sm">
             Iniciar sesión
-          </WhatsAppCta>
+          </a>
           <WhatsAppCta surface={surface} preset="trial" size="sm">
             {surface === "f4w" ? "Registrar mi taller" : "Comenzar gratis"}
           </WhatsAppCta>
