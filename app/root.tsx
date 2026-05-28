@@ -17,6 +17,7 @@ export const headers: HeadersFunction = () => ({
 });
 
 export const links: LinksFunction = () => [
+  { rel: "icon", type: "image/svg+xml", href: "/fleetmool-favicon.svg" },
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
   { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
   {
