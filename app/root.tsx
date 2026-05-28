@@ -6,11 +6,15 @@ import {
   ScrollRestoration,
   useMatches,
 } from "@remix-run/react";
-import type { LinksFunction } from "@remix-run/cloudflare";
+import type { HeadersFunction, LinksFunction } from "@remix-run/cloudflare";
 import { useEffect } from "react";
 
 import globalsHref from "./styles/globals.css?url";
 import { useSmoothAnchor } from "~/hooks/useSmoothAnchor";
+
+export const headers: HeadersFunction = () => ({
+  "Cache-Control": "public, max-age=0, must-revalidate",
+});
 
 export const links: LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
