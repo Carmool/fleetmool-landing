@@ -61,8 +61,8 @@ export function Footer() {
         <div className="footer-bottom">
           <span data-t="footer.copy">© 2026 Fleetmool. Todos los derechos reservados.</span>
           <div className="links">
-            <a href="#" data-t="footer.privacy">Privacidad</a>
-            <a href="#" data-t="footer.terms">Términos</a>
+            <Link to="/aviso-de-privacidad" data-t="footer.privacy">Privacidad</Link>
+            <Link to="/terminos-y-condiciones" data-t="footer.terms">Términos</Link>
           </div>
         </div>
       </div>
