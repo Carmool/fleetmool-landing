@@ -27,16 +27,18 @@ export default function Index() {
   return (
     <>
       <Nav surface="fleetmool" />
-      <Hero />
-      <TrustBar />
-      <EcoTabs />
-      <FeatureStories />
-      <AiViz />
-      <ConnectedFlow />
-      <Metrics />
-      <CaseStudies />
-      <Pricing />
-      <FinalCta />
+      <main>
+        <Hero />
+        <TrustBar />
+        <EcoTabs />
+        <FeatureStories />
+        <AiViz />
+        <ConnectedFlow />
+        <Metrics />
+        <CaseStudies />
+        <Pricing />
+        <FinalCta />
+      </main>
       <Footer />
     </>
   );
