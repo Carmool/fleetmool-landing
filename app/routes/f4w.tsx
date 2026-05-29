@@ -25,14 +25,16 @@ export default function F4W() {
   return (
     <>
       <Nav surface="f4w" />
-      <F4WHero />
-      <F4WTrustBar />
-      <F4WFeatures />
-      <ComparisonTable />
-      <F4WTestimonial />
-      <F4WEcoCallout />
-      <Pricing surface="f4w" />
-      <FinalCta surface="f4w" />
+      <main>
+        <F4WHero />
+        <F4WTrustBar />
+        <F4WFeatures />
+        <ComparisonTable />
+        <F4WTestimonial />
+        <F4WEcoCallout />
+        <Pricing surface="f4w" />
+        <FinalCta surface="f4w" />
+      </main>
       <Footer />
     </>
   );

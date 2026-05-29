@@ -18,12 +18,6 @@ export const headers: HeadersFunction = () => ({
 
 export const links: LinksFunction = () => [
   { rel: "icon", type: "image/svg+xml", href: "/fleetmool-favicon.svg" },
-  { rel: "preconnect", href: "https://fonts.googleapis.com" },
-  { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-  {
-    rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300..900;1,400..700&family=JetBrains+Mono:wght@400;500;600&display=swap",
-  },
   { rel: "stylesheet", href: globalsHref },
 ];
 
