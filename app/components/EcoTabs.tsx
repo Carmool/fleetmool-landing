@@ -4,6 +4,9 @@ import { useReveal } from "~/hooks/useReveal";
 
 type Side = "fleet" | "workshop";
 
+const useIsomorphicLayoutEffect =
+  typeof window !== "undefined" ? useLayoutEffect : useEffect;
+
 export function EcoTabs() {
   const [active, setActive] = useState<Side>("fleet");
   const sliderRef = useRef<HTMLSpanElement | null>(null);
@@ -20,7 +23,7 @@ export function EcoTabs() {
     slider.style.transform = `translateX(${tab.offsetLeft - 4}px)`;
   };
 
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     position();
     if (typeof document !== "undefined") {
       document.fonts?.ready?.then(position);
