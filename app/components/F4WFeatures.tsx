@@ -11,7 +11,6 @@ export function F4WFeatures() {
     <section className="section features" id="features">
       <div className="container">
         <Reveal className="sec-head">
-          <div className="eyebrow">Para talleres</div>
           <h2 className="h1">
             Tres herramientas que cambian<br />cómo trabaja tu taller.
           </h2>
@@ -23,10 +22,6 @@ export function F4WFeatures() {
         {/* STORY 1: Cotizaciones */}
         <Reveal className="feature-story">
           <div className="feature-text">
-            <div className="feature-eyebrow">
-              <span className="feature-num">01</span>
-              <span className="feature-cat">Cotizaciones</span>
-            </div>
             <h3>Cotiza en 90 segundos.<br />Envía con un toque.</h3>
             <p className="body">
               Captura diagnóstico, piezas y mano de obra. F4W genera la cotización con tu formato,
@@ -51,7 +46,7 @@ export function F4WFeatures() {
                 <span className="mk">3</span>
                 <div className="body">
                   <b>Aprobación digital.</b>{" "}
-                  <span>El cliente aprueba en línea — todo queda registrado.</span>
+                  <span>El cliente aprueba en línea y todo queda registrado.</span>
                 </div>
               </div>
             </div>
@@ -104,11 +99,7 @@ export function F4WFeatures() {
         {/* STORY 2: Ecosistema / fleet connection */}
         <Reveal className="feature-story flip">
           <div className="feature-text">
-            <div className="feature-eyebrow">
-              <span className="feature-num">02</span>
-              <span className="feature-cat">Ecosistema</span>
-            </div>
-            <h3>Conecta con flotas — sin cambiar cómo trabajas.</h3>
+            <h3>Conecta con flotas sin cambiar cómo trabajas.</h3>
             <p className="body" style={{ padding: "15px 0px" }}>
               Tus clientes de flota ven en tiempo real cada servicio que pasa por tu taller en su plataforma
               Fleetmool. Tú sigues operando F4W como siempre. La sincronización es automática.
@@ -191,14 +182,10 @@ export function F4WFeatures() {
         {/* STORY 3: WhatsApp */}
         <Reveal className="feature-story">
           <div className="feature-text">
-            <div className="feature-eyebrow">
-              <span className="feature-num">03</span>
-              <span className="feature-cat">WhatsApp</span>
-            </div>
             <h3>Donde ya hablas con tus clientes.</h3>
             <p className="body">
               F4W trabaja sobre WhatsApp. Envía cotizaciones, recibe aprobaciones y avisa cuando el
-              vehículo está listo — desde donde tu cliente ya te escribe.
+              vehículo está listo, desde donde tu cliente ya te escribe.
             </p>
             <div className="feature-points">
               <div className="feature-point">
@@ -219,7 +206,7 @@ export function F4WFeatures() {
                 <span className="mk">3</span>
                 <div className="body">
                   <b>Todo queda registrado.</b>{" "}
-                  <span>Conversaciones, fotos y aprobaciones — auditable.</span>
+                  <span>Conversaciones, fotos y aprobaciones, todo auditable.</span>
                 </div>
               </div>
             </div>

@@ -11,7 +11,6 @@ const CheckIcon = () => (
 
 /* ── Fleetmool copy ── */
 const FLEETMOOL = {
-  eyebrow: "Empieza hoy",
   title: "Tu operación de flota, reinventada.",
   subtitle: "Únete a más de 500 flotas que ya operan con inteligencia. Sin setup complejo. Sin contratos largos.",
   bullets: [
@@ -39,7 +38,6 @@ const FLEETMOOL = {
 
 /* ── F4W copy ── */
 const F4W = {
-  eyebrow: "Empieza hoy",
   title: "Digitaliza tu taller hoy.",
   subtitle: "Únete a más de 2,000 talleres que ya operan con F4W. Empieza gratis en minutos.",
   bullets: [
@@ -51,7 +49,7 @@ const F4W = {
   card: {
     label: "Plan recomendado",
     name: "Pro · 3 meses gratis",
-    desc: "Para talleres en operación. Todo incluido, un solo precio — sin importar tu volumen.",
+    desc: "Para talleres en operación. Todo incluido, un solo precio, sin importar tu volumen.",
     price: "$69",
     cycle: "MXN / mes · después de 3 meses gratis",
     features: [
@@ -73,7 +71,6 @@ export function FinalCta({ surface = "fleetmool" }: { surface?: Surface }) {
       <div className="container">
         <div className="cta-inner">
           <Reveal>
-            <div className="eyebrow">{data.eyebrow}</div>
             <h2 className="h1">{data.title}</h2>
             <p className="cta-sub">{data.subtitle}</p>
             <div className="cta-bullets">

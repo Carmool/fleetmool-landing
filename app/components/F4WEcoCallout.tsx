@@ -6,13 +6,9 @@ export function F4WEcoCallout() {
     <section className="section ecosystem" id="ecosistema">
       <div className="container">
         <Reveal className="sec-head centered">
-          <div className="eyebrow" style={{ color: "#E78892" }}>
-            <span style={{ background: "#E78892" }}></span>
-            <span>Ecosistema</span>
-          </div>
           <h2 className="h1">¿Tus clientes manejan flotas?</h2>
           <p className="lede">
-            Invítalos a Fleetmool. La conexión es automática — y tu taller se vuelve indispensable
+            Invítalos a Fleetmool. La conexión es automática y tu taller se vuelve indispensable
             para sus operaciones.
           </p>
         </Reveal>

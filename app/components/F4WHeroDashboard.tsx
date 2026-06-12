@@ -187,7 +187,7 @@ export function F4WHeroDashboard() {
               <div className="dash-ai" style={{ background: "var(--blue-tint)", borderColor: "var(--blue-soft)" }}>
                 <div className="mk" style={{ color: "var(--blue-text)", borderColor: "var(--blue-soft)", background: "rgba(0,0,0,0.4)" }}>$</div>
                 <div className="txt">
-                  <div className="t1">Cotización lista — OS-2846 · Silverado ECO-003</div>
+                  <div className="t1">Cotización lista: OS-2846 · Silverado ECO-003</div>
                   <div className="t2">3 conceptos · Total $4,280 MXN · Aprobada por cliente en F4W llegará a Fleetmool automáticamente.</div>
                 </div>
                 <button className="btn-mini" style={{ background: "#25D366", borderColor: "#25D366", display: "inline-flex", alignItems: "center", gap: "6px" }}>

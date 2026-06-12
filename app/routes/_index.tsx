@@ -15,7 +15,7 @@ import { FinalCta } from "~/components/FinalCta";
 export const handle = { bodyPage: "index" };
 
 export const meta: MetaFunction = () => [
-  { title: "Fleetmool — Inteligencia operacional para tu flota" },
+  { title: "Fleetmool | Inteligencia operacional para tu flota" },
   {
     name: "description",
     content:

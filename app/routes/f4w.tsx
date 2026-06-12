@@ -13,7 +13,7 @@ import { FinalCta } from "~/components/FinalCta";
 export const handle = { bodyPage: "f4w", bodyAccent: "blue" };
 
 export const meta: MetaFunction = () => [
-  { title: "F4W — Tu taller, digitalizado en minutos" },
+  { title: "F4W | Tu taller, digitalizado en minutos" },
   {
     name: "description",
     content:

@@ -16,12 +16,9 @@ export function Metrics() {
   return (
     <section className="section tight metrics">
       <div className="container">
-        <div className="sec-head centered reveal" style={{ marginBottom: "36px" }}>
-          <div className="eyebrow">Resultados</div>
-        </div>
         <Reveal stagger={1} className="metrics-grid">
           <div className="metric">
-            <div className="v red">
+            <div className="v">
               <Counter target={500} suffix="+" />
             </div>
             <div className="l">Flotas activas</div>

@@ -26,7 +26,6 @@ const ArrowRight = () => (
 
 /* ── Fleetmool copy ── */
 const FLEETMOOL = {
-  eyebrow: "Precios",
   title: "Transparente. Sin sorpresas.",
   subtitle: "Sin contratos anuales. Sin costos de implementación. Empieza hoy.",
   plans: [
@@ -92,9 +91,8 @@ const FLEETMOOL = {
 
 /* ── F4W copy ── */
 const F4W = {
-  eyebrow: "Precios",
   title: "Precios diseñados para talleres.",
-  subtitle: "3 meses gratis. Luego $69/mes — sin importar el tamaño de tu taller.",
+  subtitle: "3 meses gratis. Luego $69/mes, sin importar el tamaño de tu taller.",
   plans: [
     {
       name: "Prueba",
@@ -118,7 +116,7 @@ const F4W = {
       price: "69",
       currency: "$",
       cycle: "MXN / mes · sin importar el tamaño",
-      desc: "Para talleres en operación. Todo incluido, para cualquier volumen — un solo precio.",
+      desc: "Para talleres en operación. Todo incluido, para cualquier volumen, un solo precio.",
       features: [
         "Órdenes ilimitadas",
         "Cotizaciones + WhatsApp",
@@ -162,7 +160,6 @@ export function Pricing({ surface = "fleetmool" }: { surface?: Surface }) {
     <section className="section pricing" id="pricing">
       <div className="container">
         <Reveal className="sec-head centered">
-          <div className="eyebrow">{data.eyebrow}</div>
           <h2 className="h1">{data.title}</h2>
           <p className="lede">{data.subtitle}</p>
         </Reveal>

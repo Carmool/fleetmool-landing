@@ -5,7 +5,6 @@ export function ComparisonTable() {
     <section className="section connected" id="comparacion">
       <div className="container">
         <Reveal className="sec-head centered">
-          <div className="eyebrow">Comparación</div>
           <h2 className="h1">
             La manera tradicional
             <br />

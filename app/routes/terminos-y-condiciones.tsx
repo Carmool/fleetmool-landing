@@ -3,7 +3,7 @@ import { Nav } from "~/components/Nav";
 import { Footer } from "~/components/Footer";
 
 export const meta: MetaFunction = () => [
-  { title: "Términos y Condiciones — Fleetmool" },
+  { title: "Términos y Condiciones | Fleetmool" },
   { name: "description", content: "Términos y Condiciones de uso de la plataforma Fleetmool." },
 ];
 

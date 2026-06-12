@@ -42,7 +42,6 @@ export function EcoTabs() {
     <section className="section ecosystem" id="ecosystem">
       <div className="container">
         <div ref={secHeadRef} className="sec-head centered reveal">
-          <div className="eyebrow">Ecosistema</div>
           <h2 className="h1">
             Una operación, dos lados.
             <br />

@@ -8,7 +8,6 @@ export function Hero() {
   const h1Ref = useReveal<HTMLHeadingElement>();
   const subRef = useReveal<HTMLParagraphElement>();
   const actionsRef = useReveal<HTMLDivElement>();
-  const metaRef = useReveal<HTMLDivElement>();
 
   return (
     <section className="hero">
@@ -16,7 +15,7 @@ export function Hero() {
         <div className="hero-inner">
           <Reveal className="hero-eyebrow-pill">
             <span className="what-new">Nuevo</span>
-            <span>IA predictiva — Anticipa fallas con 7 días</span>
+            <span>IA predictiva: anticipa fallas con 7 días</span>
           </Reveal>
           <h1 ref={h1Ref} className="reveal d1">
             <span>Inteligencia operacional</span>
@@ -25,7 +24,7 @@ export function Hero() {
           </h1>
           <p ref={subRef} className="hero-sub reveal d2">
             Conecta tu operación con los talleres que mantienen tu flota. Mantenimiento predictivo,
-            diagnósticos en tiempo real y visibilidad total — sin complejidad.
+            diagnósticos en tiempo real y visibilidad total, sin complejidad.
           </p>
           <div ref={actionsRef} className="hero-actions reveal d3">
             <WhatsAppCta surface="fleetmool" preset="trial" size="lg">
@@ -50,13 +49,6 @@ export function Hero() {
                 <path d="M6 4l4 4-4 4" />
               </svg>
             </a>
-          </div>
-          <div ref={metaRef} className="hero-meta reveal d4">
-            <span>Sin tarjeta de crédito</span>
-            <span className="dot"></span>
-            <span>Onboarding en 30 minutos</span>
-            <span className="dot"></span>
-            <span>Soporte en español</span>
           </div>
         </div>
       </div>
