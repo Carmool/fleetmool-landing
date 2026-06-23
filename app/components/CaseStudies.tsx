@@ -5,7 +5,6 @@ export function CaseStudies() {
     <section className="section cases">
       <div className="container">
         <Reveal className="sec-head">
-          <div className="eyebrow">Historias</div>
           <h2 className="h1">
             Operaciones reales.
             <br />
@@ -55,20 +54,20 @@ export function CaseStudies() {
           <Reveal stagger={1} className="case">
             <div className="case-result">
               <div>
-                <div className="case-result-num green">+100%</div>
+                <div className="case-result-num red">+100%</div>
                 <div className="case-result-lbl">
                   trazabilidad: todo documentado y auditable
                 </div>
               </div>
               <svg className="case-chart" viewBox="0 0 100 50" fill="none">
-                <rect x="2" y="34" width="8" height="14" fill="var(--green)" opacity="0.4" />
-                <rect x="14" y="28" width="8" height="20" fill="var(--green)" opacity="0.5" />
-                <rect x="26" y="22" width="8" height="26" fill="var(--green)" opacity="0.6" />
-                <rect x="38" y="18" width="8" height="30" fill="var(--green)" opacity="0.7" />
-                <rect x="50" y="14" width="8" height="34" fill="var(--green)" opacity="0.8" />
-                <rect x="62" y="10" width="8" height="38" fill="var(--green)" opacity="0.9" />
-                <rect x="74" y="6" width="8" height="42" fill="var(--green)" />
-                <rect x="86" y="2" width="8" height="46" fill="var(--green)" />
+                <rect x="2" y="34" width="8" height="14" fill="var(--red-light)" opacity="0.4" />
+                <rect x="14" y="28" width="8" height="20" fill="var(--red-light)" opacity="0.5" />
+                <rect x="26" y="22" width="8" height="26" fill="var(--red-light)" opacity="0.6" />
+                <rect x="38" y="18" width="8" height="30" fill="var(--red-light)" opacity="0.7" />
+                <rect x="50" y="14" width="8" height="34" fill="var(--red-light)" opacity="0.8" />
+                <rect x="62" y="10" width="8" height="38" fill="var(--red-light)" opacity="0.9" />
+                <rect x="74" y="6" width="8" height="42" fill="var(--red-light)" />
+                <rect x="86" y="2" width="8" height="46" fill="var(--red-light)" />
               </svg>
             </div>
             <div className="case-body">
@@ -91,18 +90,18 @@ export function CaseStudies() {
           <Reveal stagger={2} className="case">
             <div className="case-result">
               <div>
-                <div className="case-result-num">3</div>
+                <div className="case-result-num red">3</div>
                 <div className="case-result-lbl">
                   fallas mayores evitadas en un mes con IA predictiva
                 </div>
               </div>
               <svg className="case-chart" viewBox="0 0 100 50" fill="none">
-                <circle cx="20" cy="30" r="3" fill="var(--amber)" />
-                <circle cx="48" cy="20" r="3" fill="var(--amber)" />
-                <circle cx="78" cy="14" r="3" fill="var(--amber)" />
+                <circle cx="20" cy="30" r="3" fill="var(--red-light)" />
+                <circle cx="48" cy="20" r="3" fill="var(--red-light)" />
+                <circle cx="78" cy="14" r="3" fill="var(--red-light)" />
                 <path
                   d="M20,30 L48,20 L78,14"
-                  stroke="var(--amber)"
+                  stroke="var(--red-light)"
                   strokeWidth="1.5"
                   strokeDasharray="3 3"
                 />

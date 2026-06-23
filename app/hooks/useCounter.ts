@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 
 export function useCounter(target: string | number, suffix = "", duration = 1600) {
-  const [text, setText] = useState(typeof target === "string" ? target : `${target}${suffix}`);
+  const [text, setText] = useState(
+    typeof target === "string" ? target : `${target.toLocaleString("en-US")}${suffix}`
+  );
   const ref = useRef<HTMLSpanElement | null>(null);
   const fired = useRef(false);
 
@@ -22,7 +24,12 @@ export function useCounter(target: string | number, suffix = "", duration = 1600
               const v = Math.round(numericTarget * eased);
               setText(v.toLocaleString("en-US") + suffix);
               if (p < 1) requestAnimationFrame(step);
-              else setText(String(target));
+              else
+                setText(
+                  typeof target === "number"
+                    ? target.toLocaleString("en-US") + suffix
+                    : String(target)
+                );
             };
             requestAnimationFrame(step);
             obs.unobserve(e.target);

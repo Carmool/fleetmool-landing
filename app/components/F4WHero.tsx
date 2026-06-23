@@ -8,7 +8,6 @@ export function F4WHero() {
   const h1Ref = useReveal<HTMLHeadingElement>();
   const subRef = useReveal<HTMLParagraphElement>();
   const actionsRef = useReveal<HTMLDivElement>();
-  const metaRef = useReveal<HTMLDivElement>();
 
   return (
     <section className="hero">
@@ -16,7 +15,7 @@ export function F4WHero() {
         <div className="hero-inner">
           <Reveal className="hero-eyebrow-pill">
             <span className="what-new">F4W</span>
-            <span>Fleetmool for Workshops — 3 meses gratis</span>
+            <span>Fleetmool for Workshops: 3 meses gratis</span>
           </Reveal>
           <h1 ref={h1Ref} className="reveal d1">
             <span>Tu taller,</span>
@@ -50,13 +49,6 @@ export function F4WHero() {
                 <path d="M6 4l4 4-4 4" />
               </svg>
             </a>
-          </div>
-          <div ref={metaRef} className="hero-meta reveal d4">
-            <span>3 meses gratis</span>
-            <span className="dot"></span>
-            <span>Sin tarjeta de crédito</span>
-            <span className="dot"></span>
-            <span>Configuración en 30 minutos</span>
           </div>
         </div>
       </div>

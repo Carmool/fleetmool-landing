@@ -33,6 +33,7 @@ export function AiViz() {
         for (const e of entries) {
           if (e.isIntersecting && !started) {
             started = true;
+            el.classList.add("visible");
             tick();
             interval = setInterval(tick, TICK_MS);
             obs.disconnect();
@@ -54,15 +55,14 @@ export function AiViz() {
       <div className="container">
         <div className="ai-inner">
           <Reveal className="ai-text">
-            <div className="eyebrow">IA Operacional</div>
             <h2 className="h1">La IA trabaja antes de que llegue el problema.</h2>
             <p className="lede">
-              Cada kilometraje, cada diagnóstico, cada condición de uso entrena el modelo. Detectamos señales de desgaste con días de anticipación — y te avisamos donde ya operas: WhatsApp.
+              Cada kilometraje, cada diagnóstico, cada condición de uso entrena el modelo. Detectamos señales de desgaste con días de anticipación y te avisamos donde ya operas: WhatsApp.
             </p>
 
             <div className="ai-stats">
               <div className="ai-stat">
-                <div className="v amber">7+</div>
+                <div className="v">7+</div>
                 <div className="l">días de anticipación promedio</div>
               </div>
               <div className="ai-stat">
@@ -83,7 +83,6 @@ export function AiViz() {
               <div className={`ai-node${stepIdx === 0 ? " active" : ""}`} data-step="0">
                 <div className="ai-node-h">
                   <span className="l">Señal</span>
-                  <span className="step">01</span>
                 </div>
                 <h4>Sensor</h4>
                 <div className="desc">Kilometraje, ciclos de uso y diagnósticos del taller.</div>
@@ -99,7 +98,6 @@ export function AiViz() {
               <div className={`ai-node${stepIdx === 1 ? " active" : ""}`} data-step="1">
                 <div className="ai-node-h">
                   <span className="l">Modelo</span>
-                  <span className="step">02</span>
                 </div>
                 <h4>Predicción</h4>
                 <div className="desc">Cambio de aceite en 5 días. Confianza 94%.</div>
@@ -123,7 +121,6 @@ export function AiViz() {
               <div className={`ai-node${stepIdx === 2 ? " active" : ""}`} data-step="2">
                 <div className="ai-node-h">
                   <span className="l">Acción</span>
-                  <span className="step">03</span>
                 </div>
                 <h4>Alerta</h4>
                 <div className="desc">ECO-004 agendado con Auto Expert.</div>
@@ -138,15 +135,15 @@ export function AiViz() {
               <svg className="ai-connectors" preserveAspectRatio="none" viewBox="0 0 600 200">
                 <defs>
                   <linearGradient id="connG" x1="0" y1="0" x2="1" y2="0">
-                    <stop offset="0%" stopColor="#F0C467" stopOpacity={0} />
-                    <stop offset="50%" stopColor="#F0C467" stopOpacity={0.8} />
-                    <stop offset="100%" stopColor="#F0C467" stopOpacity={0} />
+                    <stop offset="0%" stopColor="var(--red-light)" stopOpacity={0} />
+                    <stop offset="50%" stopColor="var(--red-light)" stopOpacity={0.8} />
+                    <stop offset="100%" stopColor="var(--red-light)" stopOpacity={0} />
                   </linearGradient>
                 </defs>
                 <line x1="180" y1="100" x2="220" y2="100" stroke="rgba(255,248,235,0.15)" strokeWidth="1" strokeDasharray="2 3" />
                 <line x1="380" y1="100" x2="420" y2="100" stroke="rgba(255,248,235,0.15)" strokeWidth="1" strokeDasharray="2 3" />
-                <circle r="3" fill="#F0C467" id="ai-particle-1" cx="180" cy="100" opacity={0} />
-                <circle r="3" fill="#F0C467" id="ai-particle-2" cx="380" cy="100" opacity={0} />
+                <circle r="3" fill="var(--red-light)" id="ai-particle-1" cx="180" cy="100" opacity={0} />
+                <circle r="3" fill="var(--red-light)" id="ai-particle-2" cx="380" cy="100" opacity={0} />
               </svg>
             </div>
 

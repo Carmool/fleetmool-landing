@@ -5,22 +5,17 @@ export function FeatureStories() {
     <section className="section features" id="platform">
       <div className="container">
         <Reveal className="sec-head">
-          <div className="eyebrow">Para flotas</div>
           <h2 className="h1">
             Tres herramientas que cambian<br />cómo operas tu flota.
           </h2>
           <p className="lede">
-            Visibilidad, coordinación con talleres e inteligencia operacional. Para gestores que necesitan respuestas — no más sistemas.
+            Visibilidad, coordinación con talleres e inteligencia operacional. Para gestores que necesitan respuestas, no más sistemas.
           </p>
         </Reveal>
 
         {/* STORY 1: Real-time visibility */}
         <Reveal className="feature-story">
           <div className="feature-text">
-            <div className="feature-eyebrow">
-              <span className="feature-num">01</span>
-              <span className="feature-cat">Visibilidad</span>
-            </div>
             <h3>Cada vehículo, cada estado, cada kilómetro.</h3>
             <p className="body">
               Una sola pantalla con el estado real de tu flota. Filtra por sucursal, tipo de vehículo o estado. Encuentra cualquier vehículo, su historial y documentación en segundos.
@@ -115,13 +110,9 @@ export function FeatureStories() {
         {/* STORY 2: Workshop coordination */}
         <Reveal className="feature-story flip">
           <div className="feature-text">
-            <div className="feature-eyebrow blue">
-              <span className="feature-num">02</span>
-              <span className="feature-cat">Coordinación</span>
-            </div>
             <h3>Del taller a tu tablero, sin un solo correo.</h3>
             <p className="body">
-              Cuando un taller usa F4W para registrar un servicio, aparece automáticamente en tu plataforma. Cotizaciones, aprobaciones y avances en tiempo real — todo documentado.
+              Cuando un taller usa F4W para registrar un servicio, aparece automáticamente en tu plataforma. Cotizaciones, aprobaciones y avances en tiempo real, todo documentado.
             </p>
             <div className="feature-points">
               <div className="feature-point">
@@ -218,10 +209,6 @@ export function FeatureStories() {
         {/* STORY 3: Reports / intelligence */}
         <Reveal className="feature-story">
           <div className="feature-text">
-            <div className="feature-eyebrow">
-              <span className="feature-num">03</span>
-              <span className="feature-cat">Inteligencia</span>
-            </div>
             <h3>Decisiones de flota basadas en datos, no en sensaciones.</h3>
             <p className="body">
               Costos por vehículo, tiempos de paro, frecuencia de servicios, comparativo de talleres. Los reportes que necesitas para presupuestar y negociar, no para llenar una carpeta.
@@ -260,35 +247,35 @@ export function FeatureStories() {
                 </div>
               </div>
 
-              {/* Bar chart */}
+              {/* Bar chart — bars use px heights: % heights collapse to 0 here because the flex columns have no definite height */}
               <div style={{ flex: 1, display: "flex", alignItems: "flex-end", gap: "8px", padding: "14px 0 20px", position: "relative" }}>
                 <div style={{ position: "absolute", left: 0, right: 0, top: 0, bottom: "30px", backgroundImage: "linear-gradient(180deg, transparent calc(25% - 1px), var(--line) 25%, transparent calc(25% + 1px), transparent calc(50% - 1px), var(--line) 50%, transparent calc(50% + 1px), transparent calc(75% - 1px), var(--line) 75%, transparent calc(75% + 1px))" }}></div>
                 <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", gap: "6px", position: "relative", zIndex: 1 }}>
-                  <div style={{ width: "100%", height: "65%", background: "var(--surface-4)", borderRadius: "4px 4px 0 0" }}></div>
+                  <div style={{ width: "100%", height: "98px", background: "var(--surface-4)", borderRadius: "4px 4px 0 0" }}></div>
                   <div style={{ fontSize: "11px", color: "var(--ink-3)" }}>Ene</div>
                 </div>
                 <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", gap: "6px", zIndex: 1 }}>
-                  <div style={{ width: "100%", height: "78%", background: "var(--surface-4)", borderRadius: "4px 4px 0 0" }}></div>
+                  <div style={{ width: "100%", height: "118px", background: "var(--surface-4)", borderRadius: "4px 4px 0 0" }}></div>
                   <div style={{ fontSize: "11px", color: "var(--ink-3)" }}>Feb</div>
                 </div>
                 <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", gap: "6px", zIndex: 1 }}>
-                  <div style={{ width: "100%", height: "88%", background: "var(--surface-4)", borderRadius: "4px 4px 0 0" }}></div>
+                  <div style={{ width: "100%", height: "132px", background: "var(--surface-4)", borderRadius: "4px 4px 0 0" }}></div>
                   <div style={{ fontSize: "11px", color: "var(--ink-3)" }}>Mar</div>
                 </div>
                 <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", gap: "6px", zIndex: 1 }}>
-                  <div style={{ width: "100%", height: "72%", background: "var(--surface-4)", borderRadius: "4px 4px 0 0" }}></div>
+                  <div style={{ width: "100%", height: "108px", background: "var(--surface-4)", borderRadius: "4px 4px 0 0" }}></div>
                   <div style={{ fontSize: "11px", color: "var(--ink-3)" }}>Abr</div>
                 </div>
                 <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", gap: "6px", zIndex: 1 }}>
-                  <div style={{ width: "100%", height: "55%", background: "var(--red-soft)", borderRadius: "4px 4px 0 0" }}></div>
+                  <div style={{ width: "100%", height: "82px", background: "var(--red-soft)", borderRadius: "4px 4px 0 0" }}></div>
                   <div style={{ fontSize: "11px", color: "var(--ink-3)" }}>May</div>
                 </div>
                 <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", gap: "6px", zIndex: 1 }}>
-                  <div style={{ width: "100%", height: "42%", background: "var(--red-soft)", borderRadius: "4px 4px 0 0" }}></div>
+                  <div style={{ width: "100%", height: "63px", background: "var(--red-soft)", borderRadius: "4px 4px 0 0" }}></div>
                   <div style={{ fontSize: "11px", color: "var(--ink-3)" }}>Jun</div>
                 </div>
                 <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", gap: "6px", zIndex: 1 }}>
-                  <div style={{ width: "100%", height: "38%", background: "var(--red)", borderRadius: "4px 4px 0 0", position: "relative" }}>
+                  <div style={{ width: "100%", height: "56px", background: "var(--red)", borderRadius: "4px 4px 0 0", position: "relative" }}>
                     <div style={{ position: "absolute", bottom: "calc(100% + 8px)", left: "50%", transform: "translateX(-50%)", background: "var(--ink)", color: "var(--bg)", fontSize: "11px", padding: "4px 8px", borderRadius: "6px", whiteSpace: "nowrap", fontWeight: 600 }}>$28.4k</div>
                   </div>
                   <div style={{ fontSize: "11px", color: "var(--ink)", fontWeight: 600 }}>Jul</div>

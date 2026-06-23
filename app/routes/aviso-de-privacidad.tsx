@@ -3,7 +3,7 @@ import { Nav } from "~/components/Nav";
 import { Footer } from "~/components/Footer";
 
 export const meta: MetaFunction = () => [
-  { title: "Aviso de Privacidad — Fleetmool" },
+  { title: "Aviso de Privacidad | Fleetmool" },
   { name: "description", content: "Aviso de Privacidad de Fleetmool conforme a la LFPDPPP." },
 ];
 

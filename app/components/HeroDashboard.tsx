@@ -149,21 +149,21 @@ export function HeroDashboard() {
                   <div className="dash-row">
                     <div className="veh"><span className="mk-mini">T</span><span className="id">ECO-001</span></div>
                     <span className="model">Toyota Hilux 2022</span>
-                    <div className="status ok"><span className="dot"></span>En ruta — CDMX</div>
+                    <div className="status ok"><span className="dot"></span>En ruta · CDMX</div>
                     <span className="km">45,230 km</span>
                     <span className="action">Ver →</span>
                   </div>
                   <div className="dash-row">
                     <div className="veh"><span className="mk-mini">F</span><span className="id">ECO-002</span></div>
                     <span className="model">Ford Transit 2023</span>
-                    <div className="status ok"><span className="dot"></span>En ruta — MTY</div>
+                    <div className="status ok"><span className="dot"></span>En ruta · MTY</div>
                     <span className="km">23,100 km</span>
                     <span className="action">Ver →</span>
                   </div>
                   <div className="dash-row">
                     <div className="veh"><span className="mk-mini">C</span><span className="id">ECO-003</span></div>
                     <span className="model">Chevrolet Silverado 2021</span>
-                    <div className="status warn"><span className="dot"></span>En taller — Auto Expert</div>
+                    <div className="status warn"><span className="dot"></span>En taller · Auto Expert</div>
                     <span className="km">67,800 km</span>
                     <span className="action">Ver →</span>
                   </div>
@@ -181,7 +181,7 @@ export function HeroDashboard() {
                 <div className="mk">IA</div>
                 <div className="txt">
                   <div className="t1">Alerta predictiva · hace 4 minutos</div>
-                  <div className="t2">ECO-004 requiere cambio de aceite en 5 días — basado en 89,450 km y ciclos de uso. Agendar ahora reduce el riesgo de paro no programado en 94%.</div>
+                  <div className="t2">ECO-004 requiere cambio de aceite en 5 días, según 89,450 km y ciclos de uso. Agendar ahora reduce el riesgo de paro no programado en 94%.</div>
                 </div>
                 <button className="btn-mini">Agendar</button>
               </div>
