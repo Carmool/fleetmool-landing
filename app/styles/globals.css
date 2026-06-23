@@ -582,19 +582,6 @@ section.section.loose { padding: 130px 0; }
     radial-gradient(50% 35% at 100% 30%, rgba(var(--red-glow-rgb), 0.08), transparent 60%);
   pointer-events: none;
 }
-.hero::after {
-  /* Subtle grid */
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(255,248,235,0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,248,235,0.025) 1px, transparent 1px);
-  background-size: 56px 56px;
-  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 20%, transparent 100%);
-  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 20%, transparent 100%);
-  pointer-events: none;
-}
 .hero-inner {
   position: relative;
   text-align: center;
@@ -1190,17 +1177,6 @@ section.section.loose { padding: 130px 0; }
   position: relative;
   min-height: 480px;
 }
-.eco-viz::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(255,248,235,0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,248,235,0.03) 1px, transparent 1px);
-  background-size: 28px 28px;
-  -webkit-mask-image: radial-gradient(60% 60% at 50% 50%, black 30%, transparent 100%);
-  mask-image: radial-gradient(60% 60% at 50% 50%, black 30%, transparent 100%);
-}
 
 .eco-card-fragment {
   position: relative;
@@ -1400,16 +1376,6 @@ section.section.loose { padding: 130px 0; }
   gap: 16px;
   overflow: hidden;
   box-shadow: var(--shadow-lg);
-}
-.ai-viz::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(255,248,235,0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,248,235,0.025) 1px, transparent 1px);
-  background-size: 24px 24px;
-  pointer-events: none;
 }
 .ai-stage {
   position: relative;
