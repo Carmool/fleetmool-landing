@@ -64,6 +64,8 @@ export function Nav({ surface }: { surface: Surface }) {
               src="/fleetmool-transparent.png"
               alt="Fleetmool"
               className="nav-logo-img"
+              width={262}
+              height={50}
             />
           </Link>
 
