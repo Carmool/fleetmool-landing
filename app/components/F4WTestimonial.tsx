@@ -9,7 +9,7 @@ export function F4WTestimonial() {
             <div
               className="case-result f4w-testimonial-result"
               style={{
-                background: "linear-gradient(180deg, var(--blue-tint), transparent 80%)",
+                background: "var(--blue-tint)",
                 borderBottomColor: "var(--blue-soft)",
                 minHeight: "auto",
               }}

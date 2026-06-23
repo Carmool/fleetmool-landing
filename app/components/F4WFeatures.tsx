@@ -224,11 +224,11 @@ export function F4WFeatures() {
               </div>
             </div>
           </div>
-          <div className="feature-art" style={{ background: "linear-gradient(180deg, var(--surface), var(--surface-2))" }}>
+          <div className="feature-art" style={{ background: "var(--surface)" }}>
             <div style={{ padding: "24px", height: "100%", display: "flex", flexDirection: "column", gap: "10px" }}>
               {/* Chat header */}
               <div style={{ display: "flex", alignItems: "center", gap: "10px", paddingBottom: "14px", borderBottom: "1px solid var(--line)" }}>
-                <div style={{ width: "36px", height: "36px", borderRadius: "50%", background: "linear-gradient(135deg, #B8D9C0, #6F947A)", display: "grid", placeItems: "center", color: "var(--bg)", fontWeight: 700, fontSize: "12px" }}>GT</div>
+                <div style={{ width: "36px", height: "36px", borderRadius: "50%", background: "#6F947A", display: "grid", placeItems: "center", color: "var(--bg)", fontWeight: 700, fontSize: "12px" }}>GT</div>
                 <div style={{ flex: 1 }}>
                   <div style={{ fontSize: "14px", fontWeight: 600 }}>Guillermo Torres</div>
                   <div style={{ fontSize: "11.5px", color: "var(--green-bright)", display: "flex", alignItems: "center", gap: "5px" }}>
