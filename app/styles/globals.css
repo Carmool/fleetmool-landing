@@ -149,16 +149,16 @@ input, button, textarea, select { font: inherit; }
 
 /* ── 2. TOKENS — DARK PRIMARY ─────────────────────────────── */
 :root {
-  /* Brand — oxblood (calibrated for dark) */
-  --red:        #9F1F2E;
-  --red-hover:  #B22737;
-  --red-deep:   #7A1620;
-  --red-tint:   rgba(231,136,146,0.10);
-  --red-soft:   rgba(231,136,146,0.28);
-  --red-text:   #E78892;
-  --red-light:  #E78892;
-  --red-lighter:#F2A6B0;
-  --red-glow-rgb: 159, 31, 46;
+  /* Brand — flag red */
+  --red:        #C1121F;
+  --red-hover:  #D01528;
+  --red-deep:   #950E17;
+  --red-tint:   rgba(193,18,31,0.10);
+  --red-soft:   rgba(193,18,31,0.28);
+  --red-text:   #EF8A93;
+  --red-light:  #EF8A93;
+  --red-lighter:#F4A8B2;
+  --red-glow-rgb: 193, 18, 31;
 
   /* Accents */
   --blue:       #3B82F6;
@@ -222,17 +222,17 @@ input, button, textarea, select { font: inherit; }
   --container-narrow: 960px;
 }
 
-/* F4W (workshops) — cobalt accent swap */
+/* F4W (workshops) — steel blue / deep space accent swap */
 body[data-accent="blue"] {
-  --red:        #2563EB;
-  --red-hover:  #1D4ED8;
-  --red-deep:   #1E40AF;
-  --red-tint:   var(--blue-tint);
-  --red-soft:   var(--blue-soft);
-  --red-text:   var(--blue-text);
-  --red-light:  #93B7FF;
-  --red-lighter:#BDD2FF;
-  --red-glow-rgb: 37, 99, 235;
+  --red:        #669BBC;
+  --red-hover:  #7AAFC9;
+  --red-deep:   #003049;
+  --red-tint:   rgba(102,155,188,0.10);
+  --red-soft:   rgba(102,155,188,0.28);
+  --red-text:   #8EC4DB;
+  --red-light:  #8EC4DB;
+  --red-lighter:#AACFE6;
+  --red-glow-rgb: 102, 155, 188;
 }
 
 /* ── 3. BASE ───────────────────────────────────────────────── */
