@@ -374,10 +374,10 @@ body::after {
 }
 .eyebrow::before {
   content: '';
-  width: 6px; height: 6px;
-  border-radius: 50%;
-  background: var(--red-text);
-  box-shadow: 0 0 8px rgba(231,136,146,0.5);
+  width: 20px; height: 2px;
+  border-radius: 1px;
+  background: currentColor;
+  flex-shrink: 0;
 }
 
 .h-display {
@@ -732,6 +732,7 @@ section.section.loose { padding: 130px 0; }
 }
 .hero h1 .accent {
   color: var(--red);
+  font-style: italic;
 }
 .hero-sub {
   font-size: clamp(17px, 1.4vw, 21px);
@@ -1110,9 +1111,10 @@ section.section.loose { padding: 130px 0; }
 
 /* ── 10. TRUST BAR ────────────────────────────────────────── */
 .trust {
-  padding: 56px 0 32px;
+  padding: 48px 0 28px;
   border-bottom: 1px solid var(--line);
   background: var(--bg);
+  overflow: hidden;
 }
 .trust-label {
   text-align: center;
@@ -1120,21 +1122,38 @@ section.section.loose { padding: 130px 0; }
   color: var(--ink-3);
   margin-bottom: 28px;
 }
+/* Continuous marquee — both halves identical so loop is seamless */
 .trust-logos {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  align-items: center;
-  gap: 24px;
-  opacity: 0.55;
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+  opacity: 0.5;
   filter: grayscale(1);
+}
+.trust-logos-inner {
+  display: flex;
+  gap: 72px;
+  align-items: center;
+  width: max-content;
+  animation: trust-scroll 30s linear infinite;
+  padding: 4px 0;
+}
+.trust-logos:hover .trust-logos-inner { animation-play-state: paused; }
+@keyframes trust-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .trust-logos-inner { animation: none; }
+  .trust-logos { mask-image: none; -webkit-mask-image: none; }
 }
 .trust-logo {
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.04em;
   color: var(--ink-2);
-  text-align: center;
   white-space: nowrap;
+  flex-shrink: 0;
 }
 .trust-logo.serif { font-style: italic; font-weight: 600; letter-spacing: 0; font-size: 16px; }
 .trust-logo.mono { font-family: var(--font-mono); font-size: 12.5px; font-weight: 500; }
@@ -1809,6 +1828,7 @@ section.section.loose { padding: 130px 0; }
   line-height: 1;
   color: var(--ink);
   margin-bottom: 10px;
+  font-variant-numeric: tabular-nums;
 }
 .metric .v.red { color: var(--red-text); }
 .metric .l { font-size: 13px; color: var(--ink-2); line-height: 1.4; font-weight: 500; }
@@ -2291,8 +2311,7 @@ section.section.loose { padding: 130px 0; }
   .compare-row .col.label { grid-column: 1 / -1; padding: 12px 20px; border-right: none; border-bottom: 1px solid var(--line); background: var(--surface-2); }
   /* Dashboard stats 2-up at tablet */
   .dash-stats { grid-template-columns: repeat(2, 1fr); }
-  /* Trust logos 3-up at tablet */
-  .trust-logos { grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  /* Trust marquee — no grid overrides needed */
   /* AI stats 2-up at tablet */
   .ai-stats { grid-template-columns: 1fr 1fr; }
 }
@@ -2323,7 +2342,6 @@ section.section.loose { padding: 130px 0; }
   .dash-stats { grid-template-columns: repeat(2, 1fr); gap: 10px; }
   /* Trust */
   .trust { padding: 40px 0 24px; }
-  .trust-logos { grid-template-columns: repeat(2, 1fr); gap: 14px; }
   /* Section headers */
   .sec-head { margin-bottom: 36px; }
   /* Ecosystem */
@@ -2413,8 +2431,7 @@ section.section.loose { padding: 130px 0; }
   .hero-actions .btn { justify-content: center; }
   .hero-meta { flex-wrap: wrap; justify-content: center; }
   .hero-dashboard { padding: 0 8px; margin-top: 12px; }
-  /* Trust */
-  .trust-logos { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  /* Trust — marquee works at all sizes */
   /* Section headers */
   .sec-head { margin-bottom: 24px; }
   /* Ecosystem */
