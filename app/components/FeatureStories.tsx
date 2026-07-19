@@ -60,13 +60,13 @@ export function FeatureStories() {
                 <span className="chip green dot">En vivo</span>
               </div>
               {/* Map placeholder w/ pins */}
-              <div style={{ position: "relative", flex: 1, background: "linear-gradient(180deg, var(--surface-2), var(--surface))", borderRadius: "var(--r-md)", border: "1px solid var(--line)", overflow: "hidden" }}>
+              <div style={{ position: "relative", flex: 1, background: "var(--surface-2)", borderRadius: "var(--r-md)", border: "1px solid var(--line)", overflow: "hidden" }}>
                 {/* subtle road lines via radial */}
                 <svg width="100%" height="100%" viewBox="0 0 400 240" preserveAspectRatio="none" style={{ position: "absolute", inset: 0, opacity: 0.7 }}>
-                  <path d="M0,60 Q100,40 200,80 T400,100" stroke="rgba(255,248,235,0.10)" strokeWidth="1.5" fill="none" />
-                  <path d="M0,160 Q100,180 200,140 T400,160" stroke="rgba(255,248,235,0.08)" strokeWidth="1.5" fill="none" />
-                  <path d="M80,0 Q90,80 60,140 T100,240" stroke="rgba(255,248,235,0.06)" strokeWidth="1.5" fill="none" />
-                  <path d="M280,0 Q300,80 320,140 T280,240" stroke="rgba(255,248,235,0.06)" strokeWidth="1.5" fill="none" />
+                  <path d="M0,60 Q100,40 200,80 T400,100" stroke="rgba(255,255,255,0.10)" strokeWidth="1.5" fill="none" />
+                  <path d="M0,160 Q100,180 200,140 T400,160" stroke="rgba(255,255,255,0.08)" strokeWidth="1.5" fill="none" />
+                  <path d="M80,0 Q90,80 60,140 T100,240" stroke="rgba(255,255,255,0.06)" strokeWidth="1.5" fill="none" />
+                  <path d="M280,0 Q300,80 320,140 T280,240" stroke="rgba(255,255,255,0.06)" strokeWidth="1.5" fill="none" />
                 </svg>
                 {/* Pins */}
                 <div style={{ position: "absolute", top: "22%", left: "18%" }}>

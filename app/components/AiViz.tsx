@@ -143,8 +143,8 @@ export function AiViz() {
                     <stop offset="100%" stopColor="#F0C467" stopOpacity={0} />
                   </linearGradient>
                 </defs>
-                <line x1="180" y1="100" x2="220" y2="100" stroke="rgba(255,248,235,0.15)" strokeWidth="1" strokeDasharray="2 3" />
-                <line x1="380" y1="100" x2="420" y2="100" stroke="rgba(255,248,235,0.15)" strokeWidth="1" strokeDasharray="2 3" />
+                <line x1="180" y1="100" x2="220" y2="100" stroke="rgba(255,255,255,0.12)" strokeWidth="1" strokeDasharray="2 3" />
+                <line x1="380" y1="100" x2="420" y2="100" stroke="rgba(255,255,255,0.12)" strokeWidth="1" strokeDasharray="2 3" />
                 <circle r="3" fill="#F0C467" id="ai-particle-1" cx="180" cy="100" opacity={0} />
                 <circle r="3" fill="#F0C467" id="ai-particle-2" cx="380" cy="100" opacity={0} />
               </svg>

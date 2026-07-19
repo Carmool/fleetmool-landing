@@ -11,7 +11,7 @@ export function F4WHero() {
   const metaRef = useReveal<HTMLDivElement>();
 
   return (
-    <section className="hero">
+    <section className="hero section-dark">
       <div className="container">
         <div className="hero-inner">
           <Reveal className="hero-eyebrow-pill">

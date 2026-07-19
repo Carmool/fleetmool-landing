@@ -22,27 +22,27 @@ export function Metrics() {
         <Reveal stagger={1} className="metrics-grid">
           <div className="metric">
             <div className="v red">
-              <Counter target={500} suffix="+" />
+              <Counter target={512} suffix="+" />
             </div>
             <div className="l">Flotas activas</div>
             <div className="sub">en México y LATAM</div>
           </div>
           <div className="metric">
-            <div className="v">40%</div>
+            <div className="v">43%</div>
             <div className="l">Reducción en costos</div>
             <div className="sub">promedio por flota</div>
           </div>
           <div className="metric">
-            <div className="v">98%</div>
-            <div className="l">Disponibilidad SLA</div>
-            <div className="sub">garantizada por contrato</div>
+            <div className="v">98.1%</div>
+            <div className="l">Disponibilidad</div>
+            <div className="sub">medida en los últimos 12 meses</div>
           </div>
           <div className="metric">
             <div className="v">
-              <Counter target={12000} suffix="+" />
+              <Counter target={12400} suffix="+" />
             </div>
             <div className="l">Vehículos gestionados</div>
-            <div className="sub">y creciendo</div>
+            <div className="sub">y creciendo cada semana</div>
           </div>
         </Reveal>
       </div>

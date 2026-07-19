@@ -10,3 +10,12 @@ dist/
 
 # Bun
 .bun/
+
+# Claude Code / superpowers skills (local tooling, not project code)
+.agents/
+.claude/skills/
+skills-lock.json
+
+# Brand assets (tracked separately, not in this repo)
+fleetmool-transparent.png
+fleetmool-favicon.svg
