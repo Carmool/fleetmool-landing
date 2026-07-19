@@ -287,6 +287,50 @@ body[data-accent="blue"] .section-dark {
   --red-glow-rgb: 102, 155, 188;
 }
 
+/* ── 2b. PRODUCT UI — always dark regardless of section ─────
+   Floating illustration panels (dashboard, map, AI viz, eco viz).
+   Always render dark — like Stripe's dark product screenshots on
+   a white page. CSS custom properties cascade down, so every child
+   element inside these containers sees the dark tokens automatically.
+   ─────────────────────────────────────────────────────────── */
+.hero-dashboard-frame,
+.feature-art,
+.eco-viz,
+.ai-viz {
+  --red-tint:     rgba(193,18,31,0.10);
+  --red-soft:     rgba(193,18,31,0.28);
+  --red-text:     #EF8A93;
+  --blue:         #3B82F6;
+  --blue-tint:    rgba(99,164,255,0.10);
+  --blue-soft:    rgba(99,164,255,0.28);
+  --blue-text:    #93B7FF;
+  --amber:        #D9A341;
+  --amber-bright: #F0C467;
+  --amber-tint:   rgba(240,196,103,0.10);
+  --amber-soft:   rgba(240,196,103,0.28);
+  --green:        #34B765;
+  --green-bright: #6FD693;
+  --green-tint:   rgba(111,214,147,0.10);
+  --green-soft:   rgba(111,214,147,0.26);
+  --bg:           #141210;
+  --bg-2:         #1A1714;
+  --surface:      #231F1C;
+  --surface-2:    #2C2823;
+  --surface-3:    #38332E;
+  --surface-4:    #44403A;
+  --ink:          #F3EDE2;
+  --ink-2:        #B5ABA0;
+  --ink-3:        #857B70;
+  --ink-4:        #5A5247;
+  --line:         rgba(255,248,235,0.09);
+  --line-2:       rgba(255,248,235,0.15);
+  --line-3:       rgba(255,248,235,0.23);
+  --shadow-sm:    0 2px 8px rgba(0,0,0,0.32);
+  --shadow-md:    0 12px 32px rgba(0,0,0,0.40);
+  --shadow-lg:    0 30px 80px rgba(0,0,0,0.50);
+  color: var(--ink);
+}
+
 /* ── 3. BASE ───────────────────────────────────────────────── */
 html, body { background: var(--bg); }
 body {
