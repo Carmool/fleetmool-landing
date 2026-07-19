@@ -222,13 +222,15 @@ input, button, textarea, select { font: inherit; }
   --container-narrow: 960px;
 }
 
-/* Dark section — hero, AI section, final CTA */
-.section-dark {
+/* Dark sections + dark chrome (nav, footer) — cool neutral, no brown tint */
+.section-dark,
+.nav,
+.footer {
   --red-tint:   rgba(193,18,31,0.10);
   --red-soft:   rgba(193,18,31,0.28);
-  --red-text:   #EF8A93;
-  --red-light:  #EF8A93;
-  --red-lighter:#F4A8B2;
+  --red-text:   #F08090;
+  --red-light:  #F08090;
+  --red-lighter:#F5A0AC;
   --blue:       #3B82F6;
   --blue-tint:  rgba(99,164,255,0.10);
   --blue-soft:  rgba(99,164,255,0.28);
@@ -241,23 +243,26 @@ input, button, textarea, select { font: inherit; }
   --green-bright: #6FD693;
   --green-tint: rgba(111,214,147,0.10);
   --green-soft: rgba(111,214,147,0.26);
-  --bg:         #141210;
-  --bg-2:       #1A1714;
-  --surface:    #231F1C;
-  --surface-2:  #2C2823;
-  --surface-3:  #38332E;
-  --surface-4:  #44403A;
-  --ink:        #F3EDE2;
-  --ink-2:      #B5ABA0;
-  --ink-3:      #857B70;
-  --ink-4:      #5A5247;
-  --line:       rgba(255,248,235,0.09);
-  --line-2:     rgba(255,248,235,0.15);
-  --line-3:     rgba(255,248,235,0.23);
-  --shadow-sm: 0 2px 8px rgba(0,0,0,0.32);
-  --shadow-md: 0 12px 32px rgba(0,0,0,0.40);
-  --shadow-lg: 0 30px 80px rgba(0,0,0,0.50);
-  --shadow-xl: 0 60px 120px -20px rgba(0,0,0,0.60);
+  /* Cool neutral dark — zero warm undertone */
+  --bg:         #0F0F0F;
+  --bg-2:       #141414;
+  --surface:    #1A1A1A;
+  --surface-2:  #222222;
+  --surface-3:  #2C2C2C;
+  --surface-4:  #383838;
+  --ink:        #F0F0F0;
+  --ink-2:      #A0A0A0;
+  --ink-3:      #6C6C6C;
+  --ink-4:      #484848;
+  --line:       rgba(255,255,255,0.07);
+  --line-2:     rgba(255,255,255,0.12);
+  --line-3:     rgba(255,255,255,0.20);
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.40);
+  --shadow-md: 0 12px 32px rgba(0,0,0,0.50);
+  --shadow-lg: 0 30px 80px rgba(0,0,0,0.60);
+  --shadow-xl: 0 60px 120px -20px rgba(0,0,0,0.70);
+}
+.section-dark {
   background: var(--bg);
   color: var(--ink);
 }
@@ -299,7 +304,7 @@ body[data-accent="blue"] .section-dark {
 .ai-viz {
   --red-tint:     rgba(193,18,31,0.10);
   --red-soft:     rgba(193,18,31,0.28);
-  --red-text:     #EF8A93;
+  --red-text:     #F08090;
   --blue:         #3B82F6;
   --blue-tint:    rgba(99,164,255,0.10);
   --blue-soft:    rgba(99,164,255,0.28);
@@ -312,22 +317,23 @@ body[data-accent="blue"] .section-dark {
   --green-bright: #6FD693;
   --green-tint:   rgba(111,214,147,0.10);
   --green-soft:   rgba(111,214,147,0.26);
-  --bg:           #141210;
-  --bg-2:         #1A1714;
-  --surface:      #231F1C;
-  --surface-2:    #2C2823;
-  --surface-3:    #38332E;
-  --surface-4:    #44403A;
-  --ink:          #F3EDE2;
-  --ink-2:        #B5ABA0;
-  --ink-3:        #857B70;
-  --ink-4:        #5A5247;
-  --line:         rgba(255,248,235,0.09);
-  --line-2:       rgba(255,248,235,0.15);
-  --line-3:       rgba(255,248,235,0.23);
-  --shadow-sm:    0 2px 8px rgba(0,0,0,0.32);
-  --shadow-md:    0 12px 32px rgba(0,0,0,0.40);
-  --shadow-lg:    0 30px 80px rgba(0,0,0,0.50);
+  /* Cool neutral — same palette as dark chrome */
+  --bg:           #0F0F0F;
+  --bg-2:         #141414;
+  --surface:      #1A1A1A;
+  --surface-2:    #222222;
+  --surface-3:    #2C2C2C;
+  --surface-4:    #383838;
+  --ink:          #F0F0F0;
+  --ink-2:        #A0A0A0;
+  --ink-3:        #6C6C6C;
+  --ink-4:        #484848;
+  --line:         rgba(255,255,255,0.07);
+  --line-2:       rgba(255,255,255,0.12);
+  --line-3:       rgba(255,255,255,0.20);
+  --shadow-sm:    0 2px 8px rgba(0,0,0,0.40);
+  --shadow-md:    0 12px 32px rgba(0,0,0,0.50);
+  --shadow-lg:    0 30px 80px rgba(0,0,0,0.60);
   color: var(--ink);
 }
 
@@ -442,12 +448,7 @@ section.section.loose { padding: 130px 0; }
   display: flex;
   align-items: center;
   transition: background 0.25s var(--ease), border-color 0.25s var(--ease);
-  /* Nav always reads as dark brand bar — overrides light root tokens */
-  --ink:   #F3EDE2;
-  --ink-2: #B5ABA0;
-  --ink-3: #857B70;
-  --ink-4: #5A5247;
-  --line-2: rgba(255,248,235,0.15);
+  /* Dark tokens inherited from .nav group selector above */
 }
 .nav-inner {
   width: 100%;
@@ -460,8 +461,8 @@ section.section.loose { padding: 130px 0; }
   gap: 24px;
 }
 .nav.scrolled {
-  background: #18160E;
-  border-bottom: 1px solid rgba(255,248,235,0.10);
+  background: #111111;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 .nav-left { display: flex; align-items: center; gap: 36px; }
 .nav-logo {
@@ -608,7 +609,7 @@ section.section.loose { padding: 130px 0; }
 
 .btn-primary {
   background: var(--red);
-  color: #F3EDE2;
+  color: #F0F0F0;
   border-color: var(--red);
 }
 .btn-primary:hover {
@@ -754,7 +755,7 @@ section.section.loose { padding: 130px 0; }
   border-radius: 16px;
   border: 1px solid var(--line-2);
   box-shadow:
-    inset 0 1px 0 rgba(255,248,235,0.04),
+    inset 0 1px 0 rgba(255,255,255,0.04),
     0 60px 120px -30px rgba(0,0,0,0.7),
     0 24px 60px -20px rgba(159,31,46,0.18);
   overflow: hidden;
@@ -1400,7 +1401,7 @@ section.section.loose { padding: 130px 0; }
   border: 1px solid var(--line-2);
   overflow: hidden;
   min-height: 420px;
-  box-shadow: inset 0 1px 0 rgba(255,248,235,0.04);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
 }
 
 /* ── 14. AI SECTION ───────────────────────────────────────── */
@@ -2139,6 +2140,7 @@ section.section.loose { padding: 130px 0; }
   background: var(--bg-2);
   border-top: 1px solid var(--line-2);
   padding: 64px 0 32px;
+  color: var(--ink);
 }
 .footer-grid {
   display: grid;
@@ -2239,7 +2241,7 @@ section.section.loose { padding: 130px 0; }
   width: 16px; height: 16px;
   border-radius: 50%;
   background: var(--red);
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23F3EDE2' stroke-width='2.5' stroke-linecap='round'><path d='M3 8l3 3 7-7'/></svg>");
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23F0F0F0' stroke-width='2.5' stroke-linecap='round'><path d='M3 8l3 3 7-7'/></svg>");
   background-repeat: no-repeat;
   background-position: center;
 }
