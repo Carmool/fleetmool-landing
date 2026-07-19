@@ -147,53 +147,53 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 ul { list-style: none; }
 input, button, textarea, select { font: inherit; }
 
-/* ── 2. TOKENS — DARK PRIMARY ─────────────────────────────── */
+/* ── 2. TOKENS — LIGHT PRIMARY ────────────────────────────── */
 :root {
   /* Brand — flag red */
   --red:        #C1121F;
   --red-hover:  #D01528;
   --red-deep:   #950E17;
-  --red-tint:   rgba(193,18,31,0.10);
-  --red-soft:   rgba(193,18,31,0.28);
-  --red-text:   #EF8A93;
-  --red-light:  #EF8A93;
-  --red-lighter:#F4A8B2;
+  --red-tint:   rgba(193,18,31,0.07);
+  --red-soft:   rgba(193,18,31,0.18);
+  --red-text:   #C1121F;      /* actual red on light bg */
+  --red-light:  #D73B46;
+  --red-lighter:#E05A64;
   --red-glow-rgb: 193, 18, 31;
 
   /* Accents */
-  --blue:       #3B82F6;
-  --blue-tint:  rgba(99,164,255,0.10);
-  --blue-soft:  rgba(99,164,255,0.28);
-  --blue-text:  #93B7FF;
+  --blue:       #2563EB;
+  --blue-tint:  rgba(37,99,235,0.07);
+  --blue-soft:  rgba(37,99,235,0.18);
+  --blue-text:  #2563EB;
 
-  --amber:      #D9A341;
-  --amber-bright: #F0C467;
-  --amber-tint: rgba(240,196,103,0.10);
-  --amber-soft: rgba(240,196,103,0.28);
+  --amber:      #B97F1A;
+  --amber-bright: #D4930F;
+  --amber-tint: rgba(185,127,26,0.08);
+  --amber-soft: rgba(185,127,26,0.20);
 
-  --green:      #34B765;
-  --green-bright: #6FD693;
-  --green-tint: rgba(111,214,147,0.10);
-  --green-soft: rgba(111,214,147,0.26);
+  --green:      #16A34A;
+  --green-bright: #15803D;
+  --green-tint: rgba(22,163,74,0.07);
+  --green-soft: rgba(22,163,74,0.18);
 
-  /* Warm dark neutrals — lighter charcoal, not near-black */
-  --bg:         #1C1917;
-  --bg-2:       #231F1C;
-  --surface:    #2C2824;
-  --surface-2:  #36312C;
-  --surface-3:  #413C36;
-  --surface-4:  #4D473F;
+  /* Light neutrals */
+  --bg:         #F7F6F3;
+  --bg-2:       #EFEDE9;
+  --surface:    #FFFFFF;
+  --surface-2:  #F2F1EE;
+  --surface-3:  #E8E6E2;
+  --surface-4:  #DDDBD6;
 
-  /* Ink (text) */
-  --ink:        #F3EDE2;
-  --ink-2:      #B5ABA0;
-  --ink-3:      #857B70;
-  --ink-4:      #5A5247;
+  /* Ink (text) — warm near-black */
+  --ink:        #18160E;
+  --ink-2:      #6A6560;
+  --ink-3:      #9E9890;
+  --ink-4:      #C5C0BA;
 
-  /* Lines — slightly stronger on lighter bg */
-  --line:       rgba(255,248,235,0.09);
-  --line-2:     rgba(255,248,235,0.15);
-  --line-3:     rgba(255,248,235,0.23);
+  /* Lines */
+  --line:       rgba(0,0,0,0.07);
+  --line-2:     rgba(0,0,0,0.11);
+  --line-3:     rgba(0,0,0,0.18);
 
   /* Type */
   --font:       'Hanken Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif;
@@ -207,11 +207,11 @@ input, button, textarea, select { font: inherit; }
   --r-xl: 20px;
   --r-full: 9999px;
 
-  /* Shadows — soft, used sparingly */
-  --shadow-sm: 0 2px 8px rgba(0,0,0,0.32);
-  --shadow-md: 0 12px 32px rgba(0,0,0,0.40);
-  --shadow-lg: 0 30px 80px rgba(0,0,0,0.50);
-  --shadow-xl: 0 60px 120px -20px rgba(0,0,0,0.60);
+  /* Shadows — subtle on light bg */
+  --shadow-sm: 0 1px 4px rgba(0,0,0,0.07);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.09);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,0.11);
+  --shadow-xl: 0 30px 80px rgba(0,0,0,0.14);
 
   /* Easing */
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
@@ -222,8 +222,60 @@ input, button, textarea, select { font: inherit; }
   --container-narrow: 960px;
 }
 
+/* Dark section — hero, AI section, final CTA */
+.section-dark {
+  --red-tint:   rgba(193,18,31,0.10);
+  --red-soft:   rgba(193,18,31,0.28);
+  --red-text:   #EF8A93;
+  --red-light:  #EF8A93;
+  --red-lighter:#F4A8B2;
+  --blue:       #3B82F6;
+  --blue-tint:  rgba(99,164,255,0.10);
+  --blue-soft:  rgba(99,164,255,0.28);
+  --blue-text:  #93B7FF;
+  --amber:      #D9A341;
+  --amber-bright: #F0C467;
+  --amber-tint: rgba(240,196,103,0.10);
+  --amber-soft: rgba(240,196,103,0.28);
+  --green:      #34B765;
+  --green-bright: #6FD693;
+  --green-tint: rgba(111,214,147,0.10);
+  --green-soft: rgba(111,214,147,0.26);
+  --bg:         #141210;
+  --bg-2:       #1A1714;
+  --surface:    #231F1C;
+  --surface-2:  #2C2823;
+  --surface-3:  #38332E;
+  --surface-4:  #44403A;
+  --ink:        #F3EDE2;
+  --ink-2:      #B5ABA0;
+  --ink-3:      #857B70;
+  --ink-4:      #5A5247;
+  --line:       rgba(255,248,235,0.09);
+  --line-2:     rgba(255,248,235,0.15);
+  --line-3:     rgba(255,248,235,0.23);
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.32);
+  --shadow-md: 0 12px 32px rgba(0,0,0,0.40);
+  --shadow-lg: 0 30px 80px rgba(0,0,0,0.50);
+  --shadow-xl: 0 60px 120px -20px rgba(0,0,0,0.60);
+  background: var(--bg);
+  color: var(--ink);
+}
+
 /* F4W (workshops) — steel blue / deep space accent swap */
 body[data-accent="blue"] {
+  --red:        #2563A8;
+  --red-hover:  #2B6FBB;
+  --red-deep:   #003049;
+  --red-tint:   rgba(37,99,168,0.07);
+  --red-soft:   rgba(37,99,168,0.18);
+  --red-text:   #2563A8;
+  --red-light:  #3A7AC4;
+  --red-lighter:#5491D0;
+  --red-glow-rgb: 37, 99, 168;
+}
+/* F4W dark sections retain original blue tones */
+body[data-accent="blue"] .section-dark {
   --red:        #669BBC;
   --red-hover:  #7AAFC9;
   --red-deep:   #003049;
@@ -247,7 +299,7 @@ body {
   overflow-x: hidden;
   font-feature-settings: "ss01", "ss02", "cv11";
 }
-::selection { background: var(--red); color: var(--ink); }
+::selection { background: var(--red); color: #F3EDE2; }
 
 /* ── 4. TYPOGRAPHY ────────────────────────────────────────── */
 .eyebrow {
@@ -345,7 +397,13 @@ section.section.loose { padding: 130px 0; }
   height: 64px;
   display: flex;
   align-items: center;
-  transition: background 0.25s var(--ease);
+  transition: background 0.25s var(--ease), border-color 0.25s var(--ease);
+  /* Nav always reads as dark brand bar — overrides light root tokens */
+  --ink:   #F3EDE2;
+  --ink-2: #B5ABA0;
+  --ink-3: #857B70;
+  --ink-4: #5A5247;
+  --line-2: rgba(255,248,235,0.15);
 }
 .nav-inner {
   width: 100%;
@@ -358,8 +416,8 @@ section.section.loose { padding: 130px 0; }
   gap: 24px;
 }
 .nav.scrolled {
-  background: var(--bg);
-  border-bottom: 1px solid var(--line-2);
+  background: #18160E;
+  border-bottom: 1px solid rgba(255,248,235,0.10);
 }
 .nav-left { display: flex; align-items: center; gap: 36px; }
 .nav-logo {
@@ -506,7 +564,7 @@ section.section.loose { padding: 130px 0; }
 
 .btn-primary {
   background: var(--red);
-  color: var(--ink);
+  color: #F3EDE2;
   border-color: var(--red);
 }
 .btn-primary:hover {
@@ -2034,8 +2092,8 @@ section.section.loose { padding: 130px 0; }
 
 /* ── 20. FOOTER ───────────────────────────────────────────── */
 .footer {
-  background: var(--bg);
-  border-top: 1px solid var(--line);
+  background: var(--bg-2);
+  border-top: 1px solid var(--line-2);
   padding: 64px 0 32px;
 }
 .footer-grid {

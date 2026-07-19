@@ -69,7 +69,7 @@ export function FinalCta({ surface = "fleetmool" }: { surface?: Surface }) {
   const data = surface === "f4w" ? F4W : FLEETMOOL;
 
   return (
-    <section className="section cta">
+    <section className="section cta section-dark">
       <div className="container">
         <div className="cta-inner">
           <Reveal>

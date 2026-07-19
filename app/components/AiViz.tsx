@@ -50,7 +50,7 @@ export function AiViz() {
   }, []);
 
   return (
-    <section className="section ai-section" id="ai">
+    <section className="section ai-section section-dark" id="ai">
       <div className="container">
         <div className="ai-inner">
           <Reveal className="ai-text">
