@@ -349,12 +349,12 @@ body {
   overflow-x: hidden;
   font-feature-settings: "ss01", "ss02", "cv11";
 }
-/* Subtle grain overlay — breaks digital flatness without adding visual weight */
+/* Subtle grain overlay — below nav/dropdowns (z:100) so it doesn't cause edge artifacts */
 body::after {
   content: '';
   position: fixed;
   inset: 0;
-  z-index: 9998;
+  z-index: 5;
   pointer-events: none;
   opacity: 0.035;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
@@ -462,6 +462,8 @@ section.section.loose { padding: 130px 0; }
   height: 64px;
   display: flex;
   align-items: center;
+  /* Pre-declare border so border-width doesn't jump from 0→1px on scroll */
+  border-bottom: 1px solid transparent;
   transition: background 0.25s var(--ease), border-color 0.25s var(--ease);
   /* Dark tokens inherited from .nav group selector above */
 }
