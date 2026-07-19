@@ -11,58 +11,41 @@ export function Footer() {
                 <img src="/fleetmool-transparent.png" alt="Fleetmool" className="nav-logo-img" />
               </Link>
             </div>
-            <p className="footer-desc" data-t="footer.desc">
+            <p className="footer-desc">
               Plataforma de inteligencia operacional para gestión de flotas y talleres en México y LATAM.
             </p>
           </div>
           <div className="footer-col">
-            <h5 data-t="footer.col1">Plataforma</h5>
+            <h5>Plataforma</h5>
             <ul>
-              <li><Link to="/" data-t="footer.l1_1">Fleetmool</Link></li>
-              <li><Link to="/f4w" data-t="footer.l1_2">F4W (Talleres)</Link></li>
-              <li><a href="#ecosystem" data-t="footer.l1_3">Integraciones</a></li>
-              <li><a href="#" data-t="footer.l1_4">API</a></li>
+              <li><Link to="/">Fleetmool</Link></li>
+              <li><Link to="/f4w">F4W · Talleres</Link></li>
+              <li><a href="/#pricing">Precios</a></li>
             </ul>
           </div>
           <div className="footer-col">
-            <h5 data-t="footer.col2">Empresa</h5>
+            <h5>Empresa</h5>
             <ul>
               <li>
-                <a href="https://www.linkedin.com/company/fleetmool/about/" target="_blank" rel="noopener noreferrer" data-t="footer.l2_1">Acerca de</a>
+                <a href="https://www.linkedin.com/company/fleetmool/about/" target="_blank" rel="noopener noreferrer">Acerca de</a>
               </li>
               <li>
-                <a href="https://www.linkedin.com/company/fleetmool/posts/" target="_blank" rel="noopener noreferrer" data-t="footer.l2_2">Blog</a>
+                <a href="https://www.linkedin.com/company/fleetmool/posts/" target="_blank" rel="noopener noreferrer">Blog</a>
               </li>
               <li>
-                <a href="https://www.linkedin.com/company/fleetmool/jobs/" target="_blank" rel="noopener noreferrer" data-t="footer.l2_3">Trabaja con nosotros</a>
+                <a href="https://www.linkedin.com/company/fleetmool/jobs/" target="_blank" rel="noopener noreferrer">Trabaja con nosotros</a>
               </li>
               <li>
-                <a
-                  href="https://wa.me/525573221028"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  data-t="footer.l2_4"
-                >
-                  Contacto
-                </a>
+                <a href="https://wa.me/525573221028" target="_blank" rel="noopener noreferrer">Contacto</a>
               </li>
-            </ul>
-          </div>
-          <div className="footer-col">
-            <h5 data-t="footer.col3">Soporte</h5>
-            <ul>
-              <li><a href="#" data-t="footer.l3_1">Documentación</a></li>
-              <li><a href="#" data-t="footer.l3_2">Status</a></li>
-              <li><a href="#" data-t="footer.l3_3">Comunidad</a></li>
-              <li><a href="#" data-t="footer.l3_4">Seguridad</a></li>
             </ul>
           </div>
         </div>
         <div className="footer-bottom">
-          <span data-t="footer.copy">© 2026 Fleetmool. Todos los derechos reservados.</span>
+          <span>© 2026 Fleetmool. Todos los derechos reservados.</span>
           <div className="links">
-            <Link to="/aviso-de-privacidad" data-t="footer.privacy">Privacidad</Link>
-            <Link to="/terminos-y-condiciones" data-t="footer.terms">Términos</Link>
+            <Link to="/aviso-de-privacidad">Privacidad</Link>
+            <Link to="/terminos-y-condiciones">Términos</Link>
           </div>
         </div>
       </div>

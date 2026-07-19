@@ -349,6 +349,17 @@ body {
   overflow-x: hidden;
   font-feature-settings: "ss01", "ss02", "cv11";
 }
+/* Subtle grain overlay — breaks digital flatness without adding visual weight */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+}
 ::selection { background: var(--red); color: #F3EDE2; }
 
 /* ── 4. TYPOGRAPHY ────────────────────────────────────────── */
@@ -358,7 +369,7 @@ body {
   gap: 8px;
   font-size: 13px;
   font-weight: 500;
-  letter-spacing: -0.005em;
+  letter-spacing: 0.02em;
   color: var(--red-text);
 }
 .eyebrow::before {
@@ -376,6 +387,7 @@ body {
   line-height: 0.98;
   letter-spacing: -0.035em;
   color: var(--ink);
+  text-wrap: balance;
 }
 /* Renamed from .h-1/.h-2/.h-3/.h-4 to avoid Tailwind v4 utility collision
    (Tailwind reserves .h-N as height utilities — .h-1 means height: 4px). */
@@ -385,6 +397,7 @@ body {
   line-height: 1.04;
   letter-spacing: -0.028em;
   color: var(--ink);
+  text-wrap: balance;
 }
 .h2 {
   font-size: clamp(28px, 3.3vw, 44px);
@@ -392,6 +405,7 @@ body {
   line-height: 1.08;
   letter-spacing: -0.022em;
   color: var(--ink);
+  text-wrap: balance;
 }
 .h3 {
   font-size: clamp(22px, 2.4vw, 30px);
@@ -399,6 +413,7 @@ body {
   line-height: 1.18;
   letter-spacing: -0.018em;
   color: var(--ink);
+  text-wrap: balance;
 }
 .h4 {
   font-size: 19px;
@@ -601,11 +616,11 @@ section.section.loose { padding: 130px 0; }
   font-weight: 600;
   letter-spacing: -0.005em;
   white-space: nowrap;
-  transition: background 0.15s var(--ease), color 0.15s, border-color 0.15s;
+  transition: background 0.15s var(--ease), color 0.15s, border-color 0.15s, transform 0.1s var(--ease), opacity 0.1s;
   border: 1px solid transparent;
   font-family: var(--font);
 }
-.btn:active { opacity: 0.92; }
+.btn:active { opacity: 0.88; transform: translateY(1px) scale(0.98); }
 
 .btn-primary {
   background: var(--red);
@@ -1875,7 +1890,7 @@ section.section.loose { padding: 130px 0; }
 }
 .case-author .av {
   width: 36px; height: 36px;
-  border-radius: 50%;
+  border-radius: 28%;
   background: var(--surface-3);
   color: var(--ink-2);
   display: grid;
@@ -2144,7 +2159,7 @@ section.section.loose { padding: 130px 0; }
 }
 .footer-grid {
   display: grid;
-  grid-template-columns: 1.6fr repeat(3, 1fr);
+  grid-template-columns: 2fr repeat(2, 1fr);
   gap: 56px;
   margin-bottom: 48px;
 }
